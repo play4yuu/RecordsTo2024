@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Job Scrapper</title>
+
+    <link rel="stylesheet" href="home.css" />
+
+    <style>
+      div,
+      body,
+      h1,
+      h2,
+      span,
+      p {
+        margin: 0px;
+        padding: 0px;
+        margin-blok: 0px;
+      }
+
+      @font-face {
+        font-family: "넥고2";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "삼국지3";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Sam3KRFont.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "둥모";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      html {
+        display: flex;
+        justify-content: center;
+      }
+      .con {
+        display: flex;
+        width: 730px;
+        height: 400px;
+        flex-direction: column;
+        margin: 80px 50px 50px 50px;
+      }
+
+      /* 헤더시작 */
+      .header-box {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        padding: 10px 10px 10px 30px;
+        background-color: rgb(39, 107, 253);
+        color: white;
+        border-radius: 10px 10px 0px 0px;
+        font-size: 50px;
+        font-family: "삼국지3";
+        border: 3px #041796 solid;
+        border-bottom: 2px #041796 solid;
+      }
+      /* 헤더끝 */
+
+      .text-rap {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        background-color: #eceadc;
+        margin: 0px;
+        font-family: "둥모";
+        font-size: 30px;
+        padding: 30px 30px;
+        border: #041796 3px solid;
+        border-top: #041796 2px solid;
+      }
+
+      .mid-rap {
+        display: flex;
+        align-items: center;
+        padding: 5px 15px;
+        margin-bottom: 30px;
+      }
+
+      .sub-title {
+        margin-left: 30px;
+        padding: 5px 0px;
+      }
+
+      .kor {
+        font-weight: 600;
+      }
+
+      .eng {
+        font-size: 27px;
+      }
+
+      .input-search {
+        margin-left: 40px;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .search-box {
+        display: flex;
+        position: relative;
+        height: 55px;
+      }
+
+      form input {
+        position: absolute;
+        width: 400px;
+        height: 25px;
+        border: 2px solid #90abc0;
+        padding: 4px 30px 2px 30px;
+        right: 30px;
+        bottom: 50px;
+      }
+
+      ::placeholder {
+        font-family: "둥모";
+      }
+
+      form button {
+        position: absolute;
+        right: 30px;
+        bottom: 0px;
+        width: 100px;
+        height: 30px;
+        border-radius: 5px;
+        border: 2px solid #90abc0;
+        font-family: "둥모";
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="con">
+      <p class="header-box">Web Job Scrapper</p>
+
+      <div class="text-rap">
+        <div class="mid-rap">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2356/2356572.png"
+            alt="화면 아이콘"
+            width="70px"
+            height="70px"
+            class="srch-icon"
+          />
+          <div class="mid-rap__text">
+            <p class="sub-title kor">어떤 직업을 찾으시나요?</p>
+            <p class="sub-title eng">What kind of job are you looking for?</p>
+          </div>
+        </div>
+
+        <p class="input-search">Search:</p>
+        <form class="search-box" action="/search">
+          <input
+            type="text"
+            id="input-text"
+            name="keyword"
+            placeholder="키워드를 입력해주세요"
+            required
+          />
+          <span class="buttons">
+            <button class="search-button">찾기</button>
+          </span>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

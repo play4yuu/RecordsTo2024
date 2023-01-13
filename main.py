@@ -9,7 +9,7 @@ app = Flask("Jobs_scrapper")
 
 @app.route("/")
 def home():
-  return render_template("home.html")
+  return render_template("index.html")
 
 @app.route('/search')
 def search():
@@ -21,4 +21,4 @@ def search():
   print(sum)
   return render_template("search.html",keyword=keyword,jobs=jobs)
   
-app.run("0.0.0.0")
+app.run("127.0.0.1")
