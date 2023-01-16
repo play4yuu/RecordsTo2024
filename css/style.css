@@ -1,22 +1,21 @@
-@import "/css/font.css";
-@import "/css/reset.css";
-@import "/css/root.css";
+@import "./css/font.css";
+@import "./css/reset.css";
+@import "./css/root.css";
 
 /* 기본설정들 */
-@import "/css/status-bar.css";
-@import "/css/top-header.css";
-@import "/css/profile.css";
-@import "/css/nav.css";
-@import "/css/noti.css";
+@import "./css/status-bar.css";
+@import "./css/top-header.css";
+@import "./css/profile.css";
+@import "./css/nav.css";
+@import "./css/noti.css";
 
 /* 페이지마다 있는 항목들 */
-@import "/css/login.css";
-@import "/css/friends.css";
-@import "/css/chats.css";
-@import "https://github.com/play4yuu/clone-cocoa/blob/main/css/chats.css";
-@import "/css/more.css";
-@import "/css/setting.css";
-@import "/css/music.css";
+@import "./css/login.css";
+@import "./css/friends.css";
+@import "./css/chats.css";
+@import "./css/more.css";
+@import "./css/setting.css";
+@import "./css/music.css";
 
 html {
   display: flex;
