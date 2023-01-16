@@ -32,9 +32,10 @@
 .chat-room__img {
   width: 60px;
   height: 60px;
-  background-color: tomato;
+  background-color: none;
   border-radius: 20px;
   margin: 15px 10px 15px 0px;
+  border: #999999 solid 1px;
 }
 
 .chat__text-wrap {
