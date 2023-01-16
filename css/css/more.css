@@ -167,12 +167,21 @@
 
 .more-line__img {
   width: 50px;
+  border-radius: 10px;
   height: auto;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+}
+
+.more-line__item:hover {
+  transform: scale(1.05);
+  filter: blur(0.3px);
+  font-weight: bold;
+  transition: all 0.15s ease-in-out;
 }
 
 .more-line__text {
   font-size: 14px;
+  color: #333333;
 }
 
 /* 광고 */
@@ -184,4 +193,10 @@
   margin: 0px 30px;
   background-color: aliceblue;
   border-radius: 20px;
+}
+
+.cf-more:hover {
+  transform: scale(1.05);
+  filter: blur(0.3px);
+  transition: all 0.2s ease-in-out;
 }
