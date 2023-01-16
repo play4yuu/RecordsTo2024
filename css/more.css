@@ -1,0 +1,106 @@
+/*  ====== 지갑부분 ======== */
+
+/* 맨윗줄 지갑> */
+.wallet {
+  height: 170px;
+  background-color: #ffe155;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px 30px;
+}
+
+/* -- */
+
+.wallet__title__left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wallet__title__right {
+  display: flex;
+  align-items: center;
+}
+
+.wallet__title {
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
+  font-size: 20px;
+  margin: 25px 0px 5px 0px;
+  font-weight: bold;
+}
+
+.wallet__title-text {
+  font-size: 25px;
+  font-weight: bolder;
+  margin-right: 5px;
+}
+
+.wallet__title__left > .bi-chevron-right {
+  width: 20px;
+  height: auto;
+}
+
+.wallet__title-right-text {
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+/* 주민등록등본 어쩌구 */
+.wallet-ad {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  background-color: aliceblue;
+  border-radius: 10px;
+  margin: 10px 0px;
+  box-shadow: #aaaaaa 0px 1px 5px;
+}
+
+.wallet-ad__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.wallet-ad__left > .bi {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.wallet__pay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wallet__pay__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0px;
+}
+
+.wallet__pay__left > .bi-chat-heart-fill {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.wallet__pay__left-text,
+.wallet__pay__right-money {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.wallet-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

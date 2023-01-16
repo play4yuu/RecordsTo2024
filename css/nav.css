@@ -1,0 +1,43 @@
+/* 친구창의 네비게이션바 (최하단) */
+
+.nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px 0px 15px 0px;
+  border-top: 1px solid #d9d9d9;
+  background-color: #f9f9fa;
+  box-sizing: border-box;
+}
+
+.nav__list {
+  display: flex;
+  width: 100%;
+  bottom: 0px;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.nav__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 25%;
+}
+
+.nav .bi {
+  width: 30px;
+  height: auto;
+  color: var(--black-main);
+}
+
+.nav .bi-person-fill {
+  width: 38px;
+  height: auto;
+}
+
+.nav .bi-person {
+  width: 38px;
+  height: auto;
+}

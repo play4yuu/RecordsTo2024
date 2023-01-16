@@ -1,0 +1,40 @@
+.new-noti {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 25px;
+  background-color: #ff6b39;
+  color: white;
+  font-size: 15px;
+  border-radius: 20px;
+  right: 33px;
+  bottom: 20px;
+  padding: 0px 9px;
+}
+
+.chat-noti {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 25px;
+  background-color: #ff6b39;
+  color: white;
+  font-size: 15px;
+  border-radius: 20px;
+  right: 33px;
+  bottom: 20px;
+  padding: 0px 9px;
+}
+
+.small-noti {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: tomato;
+  border-radius: 50%;
+  right: 0px;
+  top: 0px;
+}
