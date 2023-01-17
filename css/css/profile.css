@@ -7,12 +7,22 @@
   height: 105px;
 }
 
+.profile-l:hover {
+  transition: 0.2s ease-in-out all;
+  background-color: #f0f0f0;
+}
+
 .profile-l__img {
   width: 70px;
   height: 70px;
   border-radius: 20px;
   background-color: var(--blue-100);
   border: 1px solid #dddddd;
+}
+
+.profile-l__img:hover {
+  transform: scale(1.05);
+  transition: 0.15s all ease-in-out;
 }
 
 .profile-l__text-wrap {
@@ -50,6 +60,7 @@
 
 .profile-header__text {
   margin-right: 10px;
+  font-weight: bold;
 }
 
 .profile-header__icon-wrap {
@@ -64,7 +75,7 @@
 
 /* 프로필 세로 : profile-vir */
 .profile-vir {
-  margin: 0px 30px;
+  padding: 0px 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -84,10 +95,15 @@
 
 /* 프로필 s : profile-s 5050 */
 .profile-s {
-  margin: 5px 30px 10px 30px;
+  padding: 10px 30px 10px 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.profile-s:hover {
+  transition: 0.2s ease-in-out all;
+  background-color: #f0f0f0;
 }
 
 .profile-s__text-wrap {
@@ -110,6 +126,12 @@
   margin-bottom: 5px;
   border-radius: 15px;
   border: 1px #cccccc solid;
+}
+
+.profile-s__img-vir:hover,
+.profile-s__img:hover {
+  transform: scale(1.05);
+  transition: 0.15s all ease-in-out;
 }
 
 .profile-s__text-vir {
