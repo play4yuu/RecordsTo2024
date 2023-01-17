@@ -1,11 +1,13 @@
 .status-bar {
-  position: relative;
+  position: absolute;
+  width: 88%;
+  top: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 25px;
   flex-direction: row;
-  padding: 10px 30px 3px 30px;
+  padding: 10px 30px 5px 30px;
   font-size: 16px;
   color: var(--black-main);
   font-weight: bold;
@@ -25,7 +27,6 @@
 }
 
 .status-bar__left__time {
-  align-items: center;
   margin-right: 5px;
 }
 
@@ -40,7 +41,7 @@
 .battary-text {
   display: flex;
   align-items: center;
-  margin: 0px 0px 0px 5px;
+  margin: 0px 0px 0px 7px;
 }
 
 .bi-battery-half {
@@ -49,14 +50,14 @@
   transform: rotate(270deg);
   position: absolute;
   right: 9px;
-  top: 11px;
+  top: 12px;
 }
 
 /* 아이콘관련 */
 
 .status-bar__right__icons {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .status-bar__left__icons {
@@ -65,12 +66,11 @@
 }
 
 .status-bar .bi {
-  margin-left: 6px;
+  margin-left: 8px;
 }
 
 .bi-wifi,
 .bi-reception-4 {
   width: 18px;
   height: auto;
-  top: 50px;
 }

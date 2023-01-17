@@ -1,0 +1,12 @@
+.fri-con {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  margin-bottom: 92px;
+}
+
+.fri-con::-webkit-scrollbar {
+  display: none; /* 크롬, 사파리, 오페라, 엣지 */
+}

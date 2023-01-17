@@ -17,6 +17,10 @@
 @import "./css/setting.css";
 @import "./css/music.css";
 
+@import "./css/chatroom.css";
+
+@import "./css/cf.css";
+
 html {
   display: flex;
   align-items: center;
@@ -35,18 +39,8 @@ body {
 }
 
 /* 그외 영역에 걸쳐 나오는 것들 */
-.cf-area {
-  position: relative;
-  display: flex;
-  height: 85px;
-  margin: 0px 30px;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--blue-100);
-  border-radius: 20px;
-  border: solid 1px #dddddd;
-}
 
 a {
   text-decoration-line: none;
+  color: var(--black-main);
 }

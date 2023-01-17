@@ -38,3 +38,13 @@
   right: 0px;
   top: 0px;
 }
+
+.small-noti-vir {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: tomato;
+  border-radius: 50%;
+  left: 0px;
+  top: 0px;
+}

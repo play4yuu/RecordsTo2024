@@ -1,8 +1,17 @@
 /* 큰설정 */
-.chats {
+.chats-wrap {
   display: flex;
   flex-direction: column;
-  margin: 10px 30px 90px 30px;
+  /* margin: 10px 30px 90px 30px; */
+}
+
+.chats {
+  padding: 5px 30px 5px 30px;
+}
+
+.chats:hover {
+  transition: 0.05s all ease-in-out;
+  background-color: var(--blue-50);
 }
 
 .chat-room {
@@ -18,6 +27,11 @@
 
 .unpush {
   color: #999999;
+}
+
+.unpush:hover {
+  transition: all 0.15s ease;
+  color: var(--black-main);
 }
 
 /* 왼쪽 */

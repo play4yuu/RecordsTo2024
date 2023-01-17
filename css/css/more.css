@@ -56,7 +56,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 13px 16px;
-  background-color: aliceblue;
+  background-color: white;
   border-radius: 10px;
   margin: 10px 0px;
   box-shadow: #aaaaaa 0px 1px 5px;
@@ -170,33 +170,56 @@
   border-radius: 10px;
   height: auto;
   margin-bottom: 8px;
+  filter: invert(22%) sepia(1%) saturate(698%) hue-rotate(132deg)
+    brightness(101%) contrast(83%);
 }
 
 .more-line__item:hover {
   transform: scale(1.05);
-  filter: blur(0.3px);
   font-weight: bold;
-  transition: all 0.15s ease-in-out;
+  transition: all 0.1s ease;
 }
 
 .more-line__text {
   font-size: 14px;
-  color: #333333;
 }
 
-/* 광고 */
-.cf-more {
-  display: flex;
-  height: 200px;
-  align-items: center;
-  justify-content: center;
-  margin: 0px 30px;
-  background-color: aliceblue;
-  border-radius: 20px;
+/* ====== 색변환 및 tran 관련 */
+
+/* ===월렛쪽 */
+.wallet-ad:hover {
+  transition: all 0.1s ease;
+  box-shadow: inset 3px 3px 8px #bbbbbb;
+  border: #aaaaaa 5x solid inset;
 }
 
-.cf-more:hover {
-  transform: scale(1.05);
-  filter: blur(0.3px);
-  transition: all 0.2s ease-in-out;
+/* === 44 아이콘쪽 */
+/* 노란색 */
+body > div.more > ul:nth-child(1) > il:nth-child(2):hover,
+body > div.more > ul:nth-child(4) > il:nth-child(3):hover,
+body > div.more > ul:nth-child(4) > il:nth-child(4):hover,
+body > div.more > ul:nth-child(2) > il:nth-child(4):hover {
+  font-weight: blod;
+  filter: invert(82%) sepia(26%) saturate(2483%) hue-rotate(350deg)
+    brightness(91%) contrast(82%);
+}
+
+/* 분홍색 */
+body > div.more > ul:nth-child(3) > il:nth-child(1):hover {
+  font-weight: bold;
+  filter: invert(78%) sepia(17%) saturate(5141%) hue-rotate(312deg)
+    brightness(101%) contrast(99%);
+}
+
+/* 초록색 */
+body > div.more > ul:nth-child(1) > il:nth-child(3):hover,
+body > div.more > ul:nth-child(3) > il:nth-child(4):hover {
+  filter: invert(33%) sepia(23%) saturate(1061%) hue-rotate(72deg)
+    brightness(95%) contrast(91%);
+}
+
+/* 마비로고 회전 */
+body > div.more > ul:nth-child(4) > il:nth-child(2) > img:hover {
+  transition: 0.3s all ease;
+  transform: rotate(90deg);
 }

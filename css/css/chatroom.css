@@ -1,0 +1,130 @@
+.chatroom-color {
+  background-color: #bacee0;
+}
+
+.chatroom-color > .status-bar:hover {
+  transition: all 0.2s ease-in-out;
+  background-color: #90a7b8;
+  color: var(--black-main);
+}
+
+/* 기본설정끝 */
+
+.small-header {
+  display: flex;
+  align-items: center;
+  margin-top: 38px;
+  height: 50px;
+  padding: 10px 28px;
+  flex-shrink: 0;
+}
+
+.small-header__left {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+.small-header__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.small-header__right__icons {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.chatroom-title .bi {
+  width: 24px;
+  height: auto;
+  margin-left: 20px;
+}
+
+body
+  > div.chatroom-title.small-header
+  > div.chatroom-title__left.small-header__left
+  > a
+  > svg {
+  margin-left: 0px;
+}
+
+.chatroom-title-text {
+  font-size: 25px;
+  font-weight: bolder;
+  margin-left: 15px;
+}
+
+.chatroom-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatroom-time__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #98afc6;
+  border-radius: 20px;
+  font-size: 14px;
+  color: white;
+}
+
+.chat-main {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 0px 30px;
+}
+
+.chat__left-l {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3px;
+  margin-bottom: 20px;
+}
+
+.chat__left-l__img {
+  border-radius: 10px;
+}
+
+.chat__left__mid {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.chat__left-m__name {
+  font-size: 18px;
+  font-weight: bolder;
+  margin-bottom: 5px;
+}
+
+.chat__left-m__mes {
+  background-color: white;
+  padding: 10px 10px;
+  border-radius: 0px 8px 8px 8px;
+  margin-right: 7px;
+  line-height: 20px;
+}
+
+.chat__left__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  font-size: 9px;
+}
+
+.chat__left-r__num {
+  margin-bottom: 5px;
+  color: var(--kakao-color);
+}

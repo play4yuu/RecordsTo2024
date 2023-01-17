@@ -41,3 +41,10 @@
   width: 38px;
   height: auto;
 }
+
+.nav .bi:hover {
+  transform: scale(1.1);
+  transition: all 0.1s ease-in-out;
+}
+
+/* =============== */
