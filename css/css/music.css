@@ -22,6 +22,18 @@
   height: 60px;
 }
 
+.fri-play-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bi-play {
+  width: 40px;
+  height: auto;
+  color: #44b606;
+}
+
 .play-list-btn__left-wrap {
   display: flex;
   align-items: center;
@@ -123,11 +135,16 @@
   width: 70px;
   height: 70px;
   background-color: white;
-  box-shadow: 0px 5px 10px #555555;
+  box-shadow: 0px 0px 5px #555555;
 
   border-radius: 50%;
   right: 50px;
   top: 360px;
+}
+
+.fri-music__play-btn:hover {
+  transition: all 0.15s ease;
+  transform: scale(1.04);
 }
 
 /* 아랫부분 */
@@ -158,9 +175,12 @@
 }
 
 .fri-music__list__li__left:hover {
-  background-color: #555555;
-  color: white;
+  background-color: none;
+  /* color: white; */
+  transform: scale(1.02);
+  font-weight: bold;
   transition: all 0.15s ease;
+  box-shadow: rgba(2, 7, 21, 0.3) 0px 0px 10px;
 }
 
 .fri-music__img {
@@ -172,6 +192,7 @@
 
 .fri-music__mid-con {
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-around;

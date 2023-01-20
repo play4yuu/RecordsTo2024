@@ -88,8 +88,8 @@ body
 .chat__left-l {
   display: flex;
   flex-direction: row;
-  margin-top: 3px;
-  margin-bottom: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .chat__left-l__img {
@@ -127,4 +127,22 @@ body
 .chat__left-r__num {
   margin-bottom: 5px;
   color: var(--kakao-color);
+}
+
+.mes_th {
+  border-radius: 8px;
+}
+
+.img_th {
+  height: 10px;
+  display: flex;
+}
+
+.name_th {
+  margin-bottom: 0px;
+}
+
+.bi-arrow-left:hover {
+  transform: scale(1.15);
+  transition: 0.15s all ease;
 }
