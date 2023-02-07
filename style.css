@@ -126,7 +126,8 @@ label {
   align-items: flex-end;
 }
 
-#preview {
+.preview {
+  display: flex;
   padding: 3px 5px;
   margin-bottom: 10px;
 }
