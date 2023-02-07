@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+@font-face {
+  font-family: "NEXON Lv2 Gothic";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Nexon Lv2 Gothic";
+  margin: 15px;
+  padding: 30px 30px;
+
+  width: 500px;
+  height: auto;
+  border: 1px solid #020715;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px 0px 20px 0px;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  display: flex;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.txt {
+  display: flex;
+}
+
+.add-item {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.box1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0px 0px 15px 0px;
+}
+
+input[type="checkbox"] {
+  /* transform: scale(1.5); */
+  margin-right: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0px 0px 10px 0px;
+  font-size: 20px;
+}
+
+.title {
+  display: flex;
+  padding: 3px 15px;
+  margin-bottom: 10px;
+  background-color: #ffd4d4;
+}
+
+.al-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.sm_text {
+  font-size: 15px;
+}
+
+#al_henkou_label {
+  font-size: 15px;
+}
+
+.box {
+  padding: 10px 10px;
+  background-color: antiquewhite;
+}
+
+.clova {
+  font-size: 13px;
+}
+
+.madeby {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

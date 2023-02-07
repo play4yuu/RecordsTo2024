@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마비노기 알람</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="title-box">
+      <div class="box">
+        <h1 class="txt">현실시간</h1>
+        <h2 class="time" id="time_genjitsu"></h2>
+        <script src="erin_time.js"></script>
+      </div>
+
+      <div class="box">
+        <h1 class="txt">에린 시간</h1>
+        <h2 class="time" id="time_erin">에린시간표시</h2>
+        <script>
+          function getErinTime() {
+            const date = new Date();
+            const hours = String(date.getHours()).padStart(2, "0");
+            const minutes = String(date.getMinutes()).padStart(2, "0");
+            const seconds = String(date.getSeconds()).padStart(2, "0");
+
+            var curr_date = new Date();
+            var reset_date = new Date();
+
+            reset_date.setHours(0, 0, 0, 0);
+
+            var rest_sec = Math.round(
+              (((curr_date - reset_date) / 1000) % (36 * 60)) - 24
+            );
+
+            erinn_hour = Math.floor(rest_sec / 90);
+            erinn_min = Math.floor((rest_sec % 90) / 1.5);
+
+            if (erinn_hour < 0) {
+              erinn_hour = "12";
+            }
+
+            if (erinn_hour < 10) {
+              erinn_hour = "0" + erinn_hour;
+            }
+
+            if (erinn_min < 10) {
+              erinn_min = "0" + erinn_min;
+            }
+            // console.log(erinn_hour + ":" + erinn_min);
+            time_erin.innerText = `${erinn_hour}:${erinn_min}`;
+          }
+          getErinTime();
+          setInterval(getErinTime, 1500);
+        </script>
+      </div>
+    </div>
+
+    <div class="box1" id="add-item-al">
+      <h1 class="txt title">오늘의 어드템</h1>
+      <h2 class="add-item"></h2>
+      <script>
+        function add_item() {
+          var days = ["일", "월", "화", "수", "목", "금", "토"];
+          var days_items = [
+            "염색 앰플, 금속 염색 앰플",
+            "신비한 보석함, 특별한 유물 조각(50%)",
+            "대용량 축복의 포션, 로나의 특제 도시락, 음악 부스트 포션",
+            "공격 딜레이 감소 포션, 가벼운 마법 시전속도 증가 포션",
+            "긴급 탈출 아이스B, 완전 회복의 포션, 수호의 영혼석",
+            "거대한 외침의 뿔피리, 전투 경험치 포션(10분)",
+            "가벼운 물리 공격력 증가 포션, 가벼운 마법 공격력 포션",
+          ];
+
+          let day = new Date();
+          let youbi = day.getDay();
+
+          if (day.getHours < 7) {
+            youbi = youbi - 1;
+          }
+
+          document.querySelector(".add-item").innerHTML = days_items[youbi];
+        }
+        add_item();
+      </script>
+    </div>
+
+    <div class="box1" id="raid-al">
+      <h1 class="txt title">레이드 알람</h1>
+      <label>
+        <input type="checkbox" id="raid_alarm1" placeholder="1" />
+        1분전 알람
+      </label>
+
+      <label>
+        <input type="checkbox" id="raid_alarm2" placeholder="2" />
+        2분전 알람
+      </label>
+
+      <label>
+        <input type="checkbox" id="raid_alarm3" placeholder="3" />
+        3분전 알람
+      </label>
+      <script>
+        function chked() {
+          var chk1 = document.getElementById("raid_alarm1").checked;
+          var chk2 = document.getElementById("raid_alarm2").checked;
+          var chk3 = document.getElementById("raid_alarm3").checked;
+
+          let now = new Date();
+          let raid_hour = now.getHours();
+          let raid_min = now.getMinutes();
+          let raid_sec = now.getSeconds();
+
+          //   console.log(raid_min, ":", raid_sec);
+
+          var audio_1m = new Audio("./voice/01_raid_1m.mp3");
+          var audio_2m = new Audio("./voice/02_raid_2m.mp3");
+          var audio_3s = new Audio("./voice/03_raid_3m.mp3");
+
+          //   if (2 > raid_hour || raid_hour > 8) {
+          //     console.log("레이드시간입니다");
+          //   } else {
+          //     console.log("레이드시간이 아닙니다");
+          //   }
+
+          if (chk1 == true) {
+            if (raid_min == 59 && raid_sec == 0) {
+              audio_1m.play();
+            }
+          }
+
+          if (chk2 == true) {
+            if (raid_min == 58 && raid_sec == 0) {
+              audio_2m.play();
+            }
+          }
+
+          if (chk3 == true) {
+            if (raid_min == 57 && raid_sec == 0) {
+              audio_3s.play();
+            }
+          }
+        }
+        chked();
+        setInterval(chked, 1000);
+      </script>
+    </div>
+
+    <div class="box1" id="alba-al">
+      <h1 class="txt title">알바 알람 (보고시간기준)</h1>
+
+      <form>
+        <label id="al_henkou_label">
+          <input
+            type="checkbox"
+            name="al_henkou"
+            id="al_henkou"
+            value="tara"
+            placeholder="알람시간변경"
+          />
+          <p class="sm_text">
+            체크하면 에린시간으로 10분전에 알람이 출력됩니다
+          </p>
+        </label>
+
+        <br />
+
+        <label>
+          <input
+            type="checkbox"
+            name="alba_tara"
+            id="alba_tara"
+            value="tara"
+            placeholder="성당"
+          />성당: 오후4시
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="alba_cav"
+            id="alba_cav"
+            value="blue"
+            placeholder="카브 등대알바"
+          />
+          카브 등대 : 오후 7시
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="alba_tara_church"
+            id="alba_tara_church"
+            value="green"
+            placeholder="타라 법황청"
+          />
+          타라 법황청 : 오후 3시
+        </label>
+      </form>
+
+      <script>
+        function alba_al() {
+          // erinn_hour , erinn_min
+          console.log(`${erinn_hour}:${erinn_min}`);
+
+          // 2 = 타라(법황청), 3 = 카브 , 4 = 성당
+
+          var chk1 = document.getElementById("al_henkou").checked;
+          var chk2 = document.getElementById("alba_tara").checked;
+          var chk3 = document.getElementById("alba_cav").checked;
+          var chk4 = document.getElementById("alba_tara_church").checked;
+
+          var audio_church = new Audio("./voice/04_church_al_end.mp3");
+          var audio_cav = new Audio("./voice/05_cav_al_end.mp3");
+          var audio_tara = new Audio("./voice/06_seongwha_al_end.mp3");
+
+          if (chk1 == true) {
+            if (chk2 == true) {
+              if (erinn_hour == 15 && erinn_min == 40) {
+                audio_tara.play();
+              }
+            }
+
+            if (chk3 == true) {
+              if (erinn_hour == 18 && erinn_min == 40) {
+                audio_cav.play();
+              }
+            }
+
+            if (chk4 == true) {
+              if (erinn_hour == 14 && erinn_min == 40) {
+                audio_church.play();
+              }
+            }
+          }
+
+          if (chk1 == false) {
+            if (chk2 == true) {
+              if (erinn_hour == 16 && erinn_min == 0) {
+                audio_tara.play();
+              }
+            }
+
+            if (chk3 == true) {
+              if (erinn_hour == 19 && erinn_min == 0) {
+                audio_cav.play();
+                setTimeout(function () {
+                  document.body.style.backgroundColor = "white";
+                }, 5000);
+              }
+            }
+          }
+
+          if (chk4 == true) {
+            if (erinn_hour == 15 && erinn_min == 0) {
+              audio_church.play();
+            }
+          }
+        }
+
+        // alba_al();
+        setInterval(alba_al, 1500);
+      </script>
+    </div>
+
+    <div class="footer">
+      <p class="madeby">Make by WF도라미야코</p>
+      <sapn class="clova">삽입된 음성은 CLOVA Dubbing으로 제작한 AI 보이스입니다.</span>
+    </div>
+
+  </body>
+</html>
