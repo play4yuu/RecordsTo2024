@@ -88,7 +88,7 @@
     </div>
 
     <div class="box1" id="raid-al">
-      <h1 class="txt title">레이드 알람</h1>
+      <h1 class="txt title">정각 레이드 알람</h1>
       <label>
         <input type="checkbox" id="raid_alarm1" placeholder="1" />
         1분전 알람
@@ -119,12 +119,6 @@
           var audio_1m = new Audio("./voice/01_raid_1m.mp3");
           var audio_2m = new Audio("./voice/02_raid_2m.mp3");
           var audio_3s = new Audio("./voice/03_raid_3m.mp3");
-
-          //   if (2 > raid_hour || raid_hour > 8) {
-          //     console.log("레이드시간입니다");
-          //   } else {
-          //     console.log("레이드시간이 아닙니다");
-          //   }
 
           if (chk1 == true) {
             if (raid_min == 59 && raid_sec == 0) {
@@ -239,7 +233,15 @@
 
           if (chk1 == false) {
             if (chk2 == true) {
-              if (erinn_hour == 16 && erinn_min == 0) {
+              if (erinn_hour == 10 && erinn_min == 30) {
+                audio_tara.play();
+              }
+
+              if (erinn_hour == 10 && erinn_min == 40) {
+                audio_tara.play();
+              }
+
+              if (erinn_hour == 10 && erinn_min == 50) {
                 audio_tara.play();
               }
             }
@@ -262,14 +264,53 @@
         }
 
         // alba_al();
-        setInterval(alba_al, 1500);
+        setInterval(alba_al, 1501);
       </script>
     </div>
 
+    <!-- 푸터  -->
+    <!-- 볼륨조절 및 미리듣기 -->
     <div class="footer">
-      <p class="madeby">Make by WF도라미야코</p>
-      <sapn class="clova">삽입된 음성은 CLOVA Dubbing으로 제작한 AI 보이스입니다.</span>
+      <div class="vol">
+        <button id="preview" onclick="play()">놀람방지 소리 미리듣기</button>
+      </div>
+
+      <script>
+        const pre_btn = document.getElementById("preview");
+        const pre_audio = new Audio("./voice/voice_test.mp3");
+
+        pre_btn.onclick = function () {
+          pre_audio.play();
+        };
+      </script>
+      <p class="madeby">Made by WF도라미야코</p>
+      <span class="clova"
+        >삽입된 음성은 CLOVA Dubbing으로 제작한 AI 보이스입니다.</span
+      >
     </div>
 
+    <script>
+      function change_background_color() {
+        if (erinn_hour == "19" && erinn_min == "00") {
+          var color_cav_bg = (document.querySelector(
+            "#alba-al > form > label:nth-child(4)"
+          ).style.backgroundColor = "#ffaaaa");
+
+          var color_cav_font = (document.querySelector(
+            "#alba-al > form > label:nth-child(4)"
+          ).style.color = "black");
+        }
+
+        if (erinn_hour == "23" && erinn_min == "00") {
+          var color_cav_bg = (document.querySelector(
+            "#alba-al > form > label:nth-child(4)"
+          ).style.backgroundColor = "white");
+
+          var color_cav_font = (document.querySelector(
+            "#alba-al > form > label:nth-child(4)"
+          ).style.color = "black");
+        }
+      }
+    </script>
   </body>
 </html>

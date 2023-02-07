@@ -7,10 +7,3 @@ function getTime() {
 }
 getTime();
 setInterval(getTime, 1000);
-
-function setRedBack_5s() {
-  document.body.style.backgroundColor = "red";
-  setTimeout(function () {
-    document.body.style.backgroundColor = "white";
-  }, 5000);
-}
