@@ -33,12 +33,20 @@
 
         <script>
           // 팬텀 관련 스크립트
-          audio_ph6 = new Audio("./sound/phtom.mp3");
-          audio_p5 = new Audio("./sound/p5.mp3");
-          audio_p4 = new Audio("./sound/p4.mp3");
-          audio_p3 = new Audio("./sound/p3.mp3");
-          audio_p2 = new Audio("./sound/p2.mp3");
-          audio_p1 = new Audio("./sound/p1.mp3");
+          //   audio_ph6 = new Audio("./sound/phtom.mp3");
+          //   audio_p5 = new Audio("./sound/p5.mp3");
+          //   audio_p4 = new Audio("./sound/p4.mp3");
+          //   audio_p3 = new Audio("./sound/p3.mp3");
+          //   audio_p2 = new Audio("./sound/p2.mp3");
+          //   audio_p1 = new Audio("./sound/p1.mp3");
+          //   audio_ph = new Audio("./sound/h_pop.mp3");
+
+          audio_ph6 = new Audio("./sound_change/01_phantom.mp3");
+          audio_p5 = new Audio("./sound_change/02_5.mp3");
+          audio_p4 = new Audio("./sound_change/03_4.mp3");
+          audio_p3 = new Audio("./sound_change/04_3.mp3");
+          audio_p2 = new Audio("./sound_change/05_2.mp3");
+          audio_p1 = new Audio("./sound_change/06_1.mp3");
           audio_ph = new Audio("./sound/h_pop.mp3");
 
           var reset_ph = 57;
@@ -154,10 +162,16 @@
       </div>
     </section>
 
+    <div id="out">
+      <button class="timer__btn" id="all_resetBN">전체 리셋</button>
+    </div>
+
     <!-- 푸터 -->
     <footer id="footer">
       <p class="bold">Made by WF도라미야코</p>
       <p class="sm_text">다람쥐 귀여워!</p>
     </footer>
+
+    <script></script>
   </body>
 </html>
