@@ -74,6 +74,16 @@
               eval(audioFiles[ph_time]);
             }
 
+            const ph_bgcolor = document.querySelector("#timer-Phantom");
+
+            if (bz_time_60 > 5) {
+              ph_bgcolor.style.backgroundColor = rgba(255, 0, 0, 0.2);
+              ph_bgcolor.style.color = "black";
+            } else {
+              ph_bgcolor.style.backgroundColor = "blue";
+              ph_bgcolor.style.color = "white";
+            }
+
             if (ph_time <= 0) {
               ph_time = reset_ph;
             }
@@ -109,7 +119,8 @@
         </div>
 
         <script>
-          // 사운드 설정
+          // 눈보라 사운드 설정
+
           audio_nunbora = new Audio("./sound/nunbora.mp3");
           audio_s5 = new Audio("./sound/s5.mp3");
           audio_s4 = new Audio("./sound/s4.mp3");
@@ -118,11 +129,15 @@
           audio_s1 = new Audio("./sound/s1.mp3");
           audio_h_snunbora = new Audio("./sound/h_mee.mp3");
 
+          //기본 설정
+
           let bz_time_60 = 60;
           let bz_time_120 = 120;
 
           let bz_interval = 1;
           let bz_sec = "";
+
+          const bz_bgcolor = document.querySelector("#timer-Blizzard");
 
           let bz_x = setInterval(function () {
             bz_time_60--;
@@ -142,6 +157,14 @@
 
             if (bz_time_60 in bz_audioFiles) {
               eval(bz_audioFiles[bz_time_60]);
+            }
+
+            if (bz_time_60 > 5) {
+              bz_bgcolor.style.backgroundColor = rgba(0, 0, 255, 0.2);
+              bz_bgcolor.style.color = "black";
+            } else {
+              bz_bgcolor.style.backgroundColor = "blue";
+              bz_bgcolor.style.color = "white";
             }
 
             if (bz_time_60 <= 0) {
@@ -169,7 +192,7 @@
     <!-- 푸터 -->
     <footer id="footer">
       <p class="bold">Made by WF도라미야코</p>
-      <p class="sm_text">다람쥐 귀여워!</p>
+      <p class="sm_text">다람쥐 귀여워! 23 08 18 28</p>
     </footer>
 
     <script>
