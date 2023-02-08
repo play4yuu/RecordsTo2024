@@ -4,16 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>글렌베르나 타이머</title>
+    <title>글렌베르나 타이머 테스트페이지</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <script>
+      const ph_first = 8;
+      const ph_second = 13;
+      const bz_first = 13;
+      const bz_second = 18;
+    </script>
+
     <!-- 구현해야 하는 것들
     1. 0, 57, 57*2 ... 57초마다 타이머 (여자목소리1), 5초전부터 알람+배경색변화
     2. 0, 1분, 3분, 5분... 타이머 (눈보라, 남자목소리1) 5초전부터 알람+배경색변화 -->
 
     <header id="header">
-      <h1>글렌베르나 어려움 타이머</h1>
+      <h1>글베 타이머 테스트페이지</h1>
     </header>
 
     <!-- 타이머 -->
@@ -49,8 +56,8 @@
           audio_p1 = new Audio("./sound_change/06_1.mp3");
           audio_ph = new Audio("./sound/h_pop.mp3");
 
-          const ph_first = 53;
-          const ph_second = 55;
+          //   const ph_first = 53;
+          //   const ph_second = 55;
 
           var ph_time_60 = ph_first;
           var ph_time_120 = ph_second;
@@ -147,8 +154,8 @@
           audio_h_snunbora = new Audio("./sound/h_mee.mp3");
 
           //기본 설정
-          const bz_first = 58;
-          const bz_second = 120;
+          //   const bz_first = 58;
+          //   const bz_second = 120;
 
           let bz_time_60 = bz_first;
           let bz_time_120 = bz_second;
@@ -226,7 +233,7 @@
       <p class="bold">Made by WF도라미야코</p>
       <p class="sm_text">다람쥐 귀여워! 23 08 19 08</p>
       <br />
-      <a href="./testpage.html">시간 짧은 테스트 페이지</a>
+      <a href="./index.html">메인으로 돌아가기</a>
     </footer>
 
     <script>
