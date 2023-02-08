@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>글렌베르나 타이머</title>
+    <link rel="stylesheet" href="./granstyle.css" />
+  </head>
+  <body>
+    <!-- 구현해야 하는 것들
+    1. 0, 57, 57*2 ... 57초마다 타이머 (여자목소리1), 5초전부터 알람+배경색변화
+    2. 0, 1분, 3분, 5분... 타이머 (눈보라, 남자목소리1) 5초전부터 알람+배경색변화 -->
+
+    <header id="header">
+      <h1>글렌베르나 어려움 타이머</h1>
+    </header>
+
+    <!-- 타이머 -->
+    <section id="timer">
+      <div class="timers" id="timer-Phantom">
+        <h1>팬텀 타이머</h1>
+        <p calss="sm_text">팬텀이 나타나는 시간은 57초마다 반복됩니다.</p>
+        <br />
+
+        <div class="timer__ui">
+          <!-- 남은시간 -->
+          <div id="ph_timer" class="timer_text"></div>
+
+          <button class="timer__btn" id="ph_resetBN">리셋</button>
+          : 누르면 다시 57부터 시작합니다
+        </div>
+
+        <script>
+          // 팬텀 관련 스크립트
+          audio_ph6 = new Audio("./sound/phtom.mp3");
+          audio_p5 = new Audio("./sound/p5.mp3");
+          audio_p4 = new Audio("./sound/p4.mp3");
+          audio_p3 = new Audio("./sound/p3.mp3");
+          audio_p2 = new Audio("./sound/p2.mp3");
+          audio_p1 = new Audio("./sound/p1.mp3");
+          audio_ph = new Audio("./sound/h_pop.mp3");
+
+          var reset_ph = 57;
+
+          var ph_time = reset_ph;
+          var sec = "";
+
+          var x = setInterval(function () {
+            ph_time--;
+            sec = ph_time;
+            document.getElementById("ph_timer").innerHTML = sec + "초 남음";
+
+            const audioFiles = {
+              57: "audio_ph6.play()",
+              6: "audio_ph6.play()",
+              5: "audio_p5.play()",
+              4: "audio_p4.play()",
+              3: "audio_p3.play()",
+              2: "audio_p2.play()",
+              1: "audio_p1.play()",
+              0: "audio_ph.play()",
+            };
+
+            if (ph_time in audioFiles) {
+              eval(audioFiles[ph_time]);
+            }
+
+            if (ph_time <= 0) {
+              ph_time = reset_ph;
+            }
+          }, 1000);
+
+          //"pt_resetBN" 버튼을 누르면 ph_time을 570으로 초기화
+          document.getElementById("ph_resetBN").onclick = function () {
+            audio_ph.play();
+            ph_time = 57;
+          };
+        </script>
+      </div>
+
+      <!-- ========================= 으아아아ㅏ악 ========================= -->
+
+      <!-- 눈보라 타이머부분 -->
+      <div class="timers" id="timer-Blizzard">
+        <h1>눈보라 타이머</h1>
+        <p calss="sm_text">
+          눈보라가 치는 시간을 나타냅니다 0, 60, 180, 300...
+        </p>
+        <br />
+
+        <div class="timer__ui">
+          <!-- 남은시간 -->
+          <div id="bz_timer" class="timer_text"></div>
+
+          <button class="timer__btn" id="bz_resetBN60">60초>120초 리셋</button>
+          <br />
+
+          <button class="timer__btn" id="bz_resetBN120">120초부터 리셋</button>
+          : 누르면 다시 처음부터 시작합니다 (조심...)
+        </div>
+
+        <script>
+          // 사운드 설정
+          audio_nunbora = new Audio("./sound/nunbora.mp3");
+          audio_s5 = new Audio("./sound/s5.mp3");
+          audio_s4 = new Audio("./sound/s4.mp3");
+          audio_s3 = new Audio("./sound/s3.mp3");
+          audio_s2 = new Audio("./sound/s2.mp3");
+          audio_s1 = new Audio("./sound/s1.mp3");
+          audio_h_snunbora = new Audio("./sound/h_mee.mp3");
+
+          let bz_time_60 = 60;
+          let bz_time_120 = 120;
+
+          let bz_interval = 1;
+          let bz_sec = "";
+
+          let bz_x = setInterval(function () {
+            bz_time_60--;
+            bz_time_120--;
+            bz_sec = bz_time_60;
+            document.getElementById("bz_timer").innerHTML = bz_sec + "초 남음";
+
+            const bz_audioFiles = {
+              6: "audio_nunbora.play()",
+              5: "audio_s5.play()",
+              4: "audio_s4.play()",
+              3: "audio_s3.play()",
+              2: "audio_s2.play()",
+              1: "audio_s1.play()",
+              0: "audio_h_snunbora.play()",
+            };
+
+            if (bz_time_60 in bz_audioFiles) {
+              eval(bz_audioFiles[bz_time_60]);
+            }
+
+            if (bz_time_60 <= 0) {
+              bz_time_60 = 120;
+            }
+          }, 1000);
+
+          document.getElementById("bz_resetBN60").onclick = function () {
+            audio_h_snunbora.play();
+            bz_time_60 = 60;
+          };
+
+          document.getElementById("bz_resetBN120").onclick = function () {
+            audio_h_snunbora.play();
+            bz_time_60 = 120;
+          };
+        </script>
+      </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer id="footer">
+      <p class="bold">Made by WF도라미야코</p>
+      <p class="sm_text">다람쥐 귀여워!</p>
+    </footer>
+  </body>
+</html>
