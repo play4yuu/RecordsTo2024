@@ -20,15 +20,15 @@
     <section id="timer">
       <div class="timers" id="timer-Phantom">
         <h1>팬텀 타이머</h1>
-        <p calss="sm_text">팬텀이 나타나는 시간은 55초마다 반복됩니다.</p>
+        <p calss="sm_text" id="ph_annai_text"></p>
         <br />
 
         <div class="timer__ui">
           <!-- 남은시간 -->
           <div id="ph_timer" class="timer_text"></div>
 
-          <button class="timer__btn" id="ph_resetBN">리셋</button>
-          : 누르면 다시 55부터 시작합니다
+          <button class="timer__btn" id="ph_resetBN"></button>
+          <button class="timer__btn" id="ph_resetBNsecond"></button>
         </div>
 
         <script>
@@ -49,14 +49,20 @@
           audio_p1 = new Audio("./sound_change/06_1.mp3");
           audio_ph = new Audio("./sound/h_pop.mp3");
 
-          var reset_ph = 55;
+          const ph_first = 53;
+          const ph_second = 55;
 
-          var ph_time = reset_ph;
+          var ph_time_60 = ph_first;
+          var ph_time_120 = ph_second;
           var sec = "";
 
+          var ph_bgcolor = document.getElementById("timer-Phantom");
+
           var x = setInterval(function () {
-            ph_time--;
-            sec = ph_time;
+            ph_time_60--;
+            ph_time_120--;
+
+            sec = ph_time_60;
             document.getElementById("ph_timer").innerHTML = sec + "초 남음";
 
             const audioFiles = {
@@ -70,30 +76,46 @@
               0: "audio_ph.play()",
             };
 
-            if (ph_time in audioFiles) {
-              eval(audioFiles[ph_time]);
+            if (ph_time_60 in audioFiles) {
+              eval(audioFiles[ph_time_60]);
             }
 
-            const ph_bgcolor = document.querySelector("#timer-Phantom");
-
-            if (bz_time_60 > 5) {
-              ph_bgcolor.style.backgroundColor = rgba(255, 0, 0, 0.2);
-              ph_bgcolor.style.color = "black";
-            } else {
-              ph_bgcolor.style.backgroundColor = "blue";
+            if (ph_time_60 < 5) {
+              ph_bgcolor.style.backgroundColor = "red";
               ph_bgcolor.style.color = "white";
+            } else {
+              ph_bgcolor.style.backgroundColor = "#ffe5e5";
+              ph_bgcolor.style.color = "black";
             }
 
-            if (ph_time <= 0) {
-              ph_time = reset_ph;
+            if (ph_time_60 <= 0) {
+              ph_time_60 = ph_second;
             }
           }, 1000);
 
           //"pt_resetBN" 버튼을 누르면 ph_time을 570으로 초기화
           document.getElementById("ph_resetBN").onclick = function () {
             audio_ph.play();
-            ph_time = 55;
+            ph_time_60 = ph_first;
           };
+
+          document.getElementById("ph_resetBN").innerHTML =
+            "리셋버튼 " + ph_first + "초> " + ph_second + "초";
+
+          document.getElementById("ph_resetBNsecond").onclick = function () {
+            audio_ph.play();
+            ph_time_60 = ph_second;
+          };
+
+          document.getElementById("ph_resetBNsecond").innerHTML =
+            "리셋버튼 " + ph_second + "초";
+
+          document.getElementById("ph_annai_text").innerHTML =
+            "팬텀이 나타나는 시간은 처음은" +
+            ph_first +
+            "초, 그 뒤는" +
+            ph_second +
+            "초 입니다.";
         </script>
       </div>
 
@@ -102,20 +124,15 @@
       <!-- 눈보라 타이머부분 -->
       <div class="timers" id="timer-Blizzard">
         <h1>눈보라 타이머</h1>
-        <p calss="sm_text">
-          눈보라가 치는 시간을 나타냅니다 0, 60, 180, 300...
-        </p>
+        <p calss="sm_text" id="bz_annai"></p>
         <br />
 
         <div class="timer__ui">
           <!-- 남은시간 -->
           <div id="bz_timer" class="timer_text"></div>
 
-          <button class="timer__btn" id="bz_resetBN60">60초>120초 리셋</button>
-          <br />
-
-          <button class="timer__btn" id="bz_resetBN120">120초부터 리셋</button>
-          : 누르면 다시 처음부터 시작합니다 (조심...)
+          <button class="timer__btn" id="bz_resetBN60"></button>
+          <button class="timer__btn" id="bz_resetBN120"></button>
         </div>
 
         <script>
@@ -130,9 +147,11 @@
           audio_h_snunbora = new Audio("./sound/h_mee.mp3");
 
           //기본 설정
+          const bz_first = 58;
+          const bz_second = 120;
 
-          let bz_time_60 = 60;
-          let bz_time_120 = 120;
+          let bz_time_60 = bz_first;
+          let bz_time_120 = bz_second;
 
           let bz_interval = 1;
           let bz_sec = "";
@@ -159,28 +178,41 @@
               eval(bz_audioFiles[bz_time_60]);
             }
 
-            if (bz_time_60 > 5) {
-              bz_bgcolor.style.backgroundColor = rgba(0, 0, 255, 0.2);
-              bz_bgcolor.style.color = "black";
-            } else {
+            if (bz_time_60 < 5) {
               bz_bgcolor.style.backgroundColor = "blue";
               bz_bgcolor.style.color = "white";
+            } else {
+              bz_bgcolor.style.backgroundColor = "#e5e5ff";
+              bz_bgcolor.style.color = "black";
             }
 
             if (bz_time_60 <= 0) {
-              bz_time_60 = 120;
+              bz_time_60 = bz_second;
             }
           }, 1000);
 
           document.getElementById("bz_resetBN60").onclick = function () {
             audio_h_snunbora.play();
-            bz_time_60 = 60;
+            bz_time_60 = bz_first;
           };
+
+          document.getElementById("bz_resetBN60").innerHTML =
+            "리셋버튼 " + bz_first + "초> " + bz_second + "초";
 
           document.getElementById("bz_resetBN120").onclick = function () {
             audio_h_snunbora.play();
-            bz_time_60 = 120;
+            bz_time_60 = bz_second;
           };
+
+          document.getElementById("bz_resetBN120").innerHTML =
+            "리셋버튼 " + bz_second + "초";
+
+          document.getElementById("bz_annai").innerHTML =
+            "눈보라가 나타나는 시간은" +
+            bz_first +
+            "초, 그 뒤는" +
+            bz_second +
+            "초 입니다.";
         </script>
       </div>
     </section>
@@ -192,7 +224,7 @@
     <!-- 푸터 -->
     <footer id="footer">
       <p class="bold">Made by WF도라미야코</p>
-      <p class="sm_text">다람쥐 귀여워! 23 08 18 28</p>
+      <p class="sm_text">다람쥐 귀여워! 23 08 19 08</p>
     </footer>
 
     <script>
@@ -201,9 +233,9 @@
       document.getElementById("all_resetBN").onclick = function () {
         reset_sound.volume = 0.5;
         reset_sound.play();
-        ph_time = 55;
-        bz_time_60 = 60;
-        bz_time_120 = 120;
+        ph_time = ph_first;
+        bz_time_60 = bz_first;
+        bz_time_120 = bz_second;
       };
     </script>
   </body>
