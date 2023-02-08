@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -83,7 +83,9 @@
 
           document.querySelector(".add-item").innerHTML = days_items[youbi];
         }
+
         add_item();
+        setInterval(add_item, 3600);
       </script>
     </div>
 
@@ -118,7 +120,7 @@
 
           var audio_1m = new Audio("./voice/01_raid_1m.mp3");
           var audio_2m = new Audio("./voice/02_raid_2m.mp3");
-          var audio_3s = new Audio("./voice/03_raid_3m.mp3");
+          var audio_3m = new Audio("./voice/03_raid_3m.mp3");
 
           if (chk1 == true) {
             if (raid_min == 59 && raid_sec == 0) {
@@ -134,10 +136,11 @@
 
           if (chk3 == true) {
             if (raid_min == 57 && raid_sec == 0) {
-              audio_3s.play();
+              audio_3m.play();
             }
           }
         }
+
         chked();
         setInterval(chked, 1000);
       </script>
@@ -165,11 +168,22 @@
         <label>
           <input
             type="checkbox"
-            name="alba_tara"
-            id="alba_tara"
+            name="alba_bgh"
+            id="alba_bgh"
+            value="green"
+            placeholder="타라 법황청"
+          />
+          법황청 : 오후2시
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="alba_church"
+            id="alba_church"
             value="tara"
-            placeholder="성당"
-          />성당: 오후4시
+            placeholder="교회"
+          />성당 : 오후4시
         </label>
 
         <label>
@@ -182,17 +196,6 @@
           />
           카브 등대 : 오후 7시
         </label>
-
-        <label>
-          <input
-            type="checkbox"
-            name="alba_tara_church"
-            id="alba_tara_church"
-            value="green"
-            placeholder="타라 법황청"
-          />
-          타라 법황청 : 오후 3시
-        </label>
       </form>
 
       <script>
@@ -200,62 +203,52 @@
           // erinn_hour , erinn_min
           console.log(`${erinn_hour}:${erinn_min}`);
 
-          // 2 = 타라(법황청), 3 = 카브 , 4 = 성당
+          // chk2 = 교회(16) , chk3 = 카브(19) , chk4 = 법황청(14)
 
           var chk1 = document.getElementById("al_henkou").checked;
-          var chk2 = document.getElementById("alba_tara").checked;
-          var chk3 = document.getElementById("alba_cav").checked;
-          var chk4 = document.getElementById("alba_tara_church").checked;
+          var chk2_church = document.getElementById("alba_church").checked;
+          var chk3_cav = document.getElementById("alba_cav").checked;
+          var chk4_bhc = document.getElementById("alba_bgh").checked;
 
-          var audio_church = new Audio("./voice/04_church_al_end.mp3");
-          var audio_cav = new Audio("./voice/05_cav_al_end.mp3");
-          var audio_tara = new Audio("./voice/06_seongwha_al_end.mp3");
+          const audio_church = new Audio("./voice/04_church_al_end.mp3");
+          const audio_cav = new Audio("./voice/05_cav_al_end.mp3");
+          const audio_bhc = new Audio("./voice/06_seongwha_al_end.mp3");
 
-          if (chk1 == true) {
-            if (chk2 == true) {
-              if (erinn_hour == 15 && erinn_min == 40) {
-                audio_tara.play();
+          if (chk1 == false) {
+            if (chk2_church == true) {
+              if (erinn_hour == 16 && erinn_min == 00) {
+                audio_church.play();
               }
             }
-
-            if (chk3 == true) {
+            if (chk3_cav == true) {
+              if (erinn_hour == 19 && erinn_min == 00) {
+                audio_cav.play();
+              }
+            }
+            if (chk4_bhc == true) {
+              if (erinn_hour == 14 && erinn_min == 00) {
+                audio_bhc.play();
+              }
+            }
+          } else {
+            if (chk2_church == true) {
+              if (erinn_hour == 15 && erinn_min == 40) {
+                audio_church.play();
+              }
+            }
+            if (chk3_cav == true) {
               if (erinn_hour == 18 && erinn_min == 40) {
                 audio_cav.play();
               }
             }
-
-            if (chk4 == true) {
-              if (erinn_hour == 14 && erinn_min == 40) {
-                audio_church.play();
+            if (chk4_bhc == true) {
+              if (erinn_hour == 13 && erinn_min == 40) {
+                audio_bhc.play();
               }
-            }
-          }
-
-          if (chk1 == false) {
-            if (chk2 == true) {
-              if (erinn_hour == 15 && erinn_min == 30) {
-                audio_tara.play();
-              }
-            }
-
-            if (chk3 == true) {
-              if (erinn_hour == 19 && erinn_min == 0) {
-                audio_cav.play();
-                setTimeout(function () {
-                  document.body.style.backgroundColor = "white";
-                }, 5000);
-              }
-            }
-          }
-
-          if (chk4 == true) {
-            if (erinn_hour == 15 && erinn_min == 0) {
-              audio_church.play();
             }
           }
         }
-
-        // alba_al();
+        alba_al();
         setInterval(alba_al, 1501);
       </script>
     </div>
@@ -282,29 +275,5 @@
         >삽입된 음성은 CLOVA Dubbing으로 제작한 AI 보이스입니다.</span
       >
     </div>
-
-    <script>
-      function change_background_color() {
-        if (erinn_hour == "19" && erinn_min == "00") {
-          var color_cav_bg = (document.querySelector(
-            "#alba-al > form > label:nth-child(4)"
-          ).style.backgroundColor = "#ffaaaa");
-
-          var color_cav_font = (document.querySelector(
-            "#alba-al > form > label:nth-child(4)"
-          ).style.color = "black");
-        }
-
-        if (erinn_hour == "23" && erinn_min == "00") {
-          var color_cav_bg = (document.querySelector(
-            "#alba-al > form > label:nth-child(4)"
-          ).style.backgroundColor = "white");
-
-          var color_cav_font = (document.querySelector(
-            "#alba-al > form > label:nth-child(4)"
-          ).style.color = "black");
-        }
-      }
-    </script>
   </body>
 </html>
