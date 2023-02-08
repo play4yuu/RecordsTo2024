@@ -172,6 +172,16 @@
       <p class="sm_text">다람쥐 귀여워!</p>
     </footer>
 
-    <script></script>
+    <script>
+      reset_sound = new Audio("./sound/reset.mp3");
+
+      document.getElementById("all_resetBN").onclick = function () {
+        reset_sound.volume = 0.5;
+        reset_sound.play();
+        ph_time = 57;
+        bz_time_60 = 60;
+        bz_time_120 = 120;
+      };
+    </script>
   </body>
 </html>
