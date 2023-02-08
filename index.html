@@ -20,7 +20,7 @@
     <section id="timer">
       <div class="timers" id="timer-Phantom">
         <h1>팬텀 타이머</h1>
-        <p calss="sm_text">팬텀이 나타나는 시간은 57초마다 반복됩니다.</p>
+        <p calss="sm_text">팬텀이 나타나는 시간은 55초마다 반복됩니다.</p>
         <br />
 
         <div class="timer__ui">
@@ -28,7 +28,7 @@
           <div id="ph_timer" class="timer_text"></div>
 
           <button class="timer__btn" id="ph_resetBN">리셋</button>
-          : 누르면 다시 57부터 시작합니다
+          : 누르면 다시 55부터 시작합니다
         </div>
 
         <script>
@@ -49,7 +49,7 @@
           audio_p1 = new Audio("./sound_change/06_1.mp3");
           audio_ph = new Audio("./sound/h_pop.mp3");
 
-          var reset_ph = 57;
+          var reset_ph = 55;
 
           var ph_time = reset_ph;
           var sec = "";
@@ -60,7 +60,7 @@
             document.getElementById("ph_timer").innerHTML = sec + "초 남음";
 
             const audioFiles = {
-              57: "audio_ph6.play()",
+              55: "audio_ph6.play()",
               6: "audio_ph6.play()",
               5: "audio_p5.play()",
               4: "audio_p4.play()",
@@ -82,7 +82,7 @@
           //"pt_resetBN" 버튼을 누르면 ph_time을 570으로 초기화
           document.getElementById("ph_resetBN").onclick = function () {
             audio_ph.play();
-            ph_time = 57;
+            ph_time = 55;
           };
         </script>
       </div>
@@ -178,7 +178,7 @@
       document.getElementById("all_resetBN").onclick = function () {
         reset_sound.volume = 0.5;
         reset_sound.play();
-        ph_time = 57;
+        ph_time = 55;
         bz_time_60 = 60;
         bz_time_120 = 120;
       };
