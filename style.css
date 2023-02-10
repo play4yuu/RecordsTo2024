@@ -104,3 +104,61 @@ footer {
 #timer-Blizzard {
   background-color: rgba(0, 0, 255, 0.1);
 }
+
+#input_time {
+  display: flex;
+  padding: 10px 0px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #020715;
+  width: auto;
+}
+
+#input_time > .input_times {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
+}
+
+.loop {
+  display: flex;
+  margin: 3px 0px;
+}
+
+input {
+  display: flex;
+  width: 130px;
+  margin-left: 3px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.tekiyou {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#apply {
+  width: 100%;
+  padding: 10px 0px;
+  border: 1px solid #020715;
+  border-radius: 5px;
+  background-color: #020715;
+  color: white;
+  font-weight: bold;
+}
+
+#genzai_time {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0px;
+  font-weight: bold;
+}
+
+#genzai_time_line1,
+#genzai_time_line2 {
+  font-size: 13px;
+}

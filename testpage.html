@@ -9,19 +9,70 @@
   </head>
   <body>
     <script>
-      const ph_first = 8;
-      const ph_second = 13;
-      const bz_first = 13;
-      const bz_second = 18;
+      let ph_first = 58;
+      let ph_second = 60;
+      let bz_first = 60;
+      let bz_second = 120;
     </script>
-
-    <!-- 구현해야 하는 것들
-    1. 0, 57, 57*2 ... 57초마다 타이머 (여자목소리1), 5초전부터 알람+배경색변화
-    2. 0, 1분, 3분, 5분... 타이머 (눈보라, 남자목소리1) 5초전부터 알람+배경색변화 -->
 
     <header id="header">
       <h1>글베 타이머 테스트페이지</h1>
     </header>
+
+    <div id="input_time">
+      <div class="input_times">
+        <label class="loop">
+          팬텀 첫 주기 :
+          <input type="text" id="ph_first" placeholder="팬텀 첫번째 시간" />
+        </label>
+        <label class="loop">
+          팬텀 두번째주기:
+          <input type="text" id="ph_second" placeholder="팬텀 두번째 시간" />
+        </label>
+        <label class="loop">
+          눈보라 첫번째 주기:
+          <input type="text" id="bz_first" placeholder="눈보라 첫번째 시간" />
+        </label>
+        <label class="loop">
+          눈보라 두번째 주기:
+          <input type="text" id="bz_second" placeholder="눈보라 두번째 시간" />
+        </label>
+      </div>
+      <div class="tekiyou">
+        <button id="apply">적용</button>
+        <p id="genzai_time">현재 적용된 시간</p>
+        <p id="genzai_time_line1"></p>
+        <p id="genzai_time_line2"></p>
+      </div>
+    </div>
+
+    <script>
+      var applybtn = document.getElementById("apply");
+
+      var first = document.getElementById("ph_first");
+      var second = document.getElementById("ph_second");
+      var third = document.getElementById("bz_first");
+      var fourth = document.getElementById("bz_second");
+
+      function apply() {
+        ph_first = first.value;
+        ph_second = second.value;
+        bz_first = third.value;
+        bz_second = fourth.value;
+      }
+
+      applybtn.addEventListener("click", apply);
+
+      function genzai() {
+        document.getElementById("genzai_time_line1").innerHTML =
+          "팬텀 :" + ph_first + "초, " + ph_second + "초";
+        document.getElementById("genzai_time_line2").innerHTML =
+          "눈보라 :" + bz_first + "초, " + bz_second + "초";
+      }
+
+      genzai();
+      setInterval(genzai, 1000);
+    </script>
 
     <!-- 타이머 -->
     <section id="timer">
@@ -73,7 +124,6 @@
             document.getElementById("ph_timer").innerHTML = sec + "초 남음";
 
             const audioFiles = {
-              55: "audio_ph6.play()",
               6: "audio_ph6.play()",
               5: "audio_p5.play()",
               4: "audio_p4.play()",
@@ -106,23 +156,28 @@
             ph_time_60 = ph_first;
           };
 
-          document.getElementById("ph_resetBN").innerHTML =
-            "리셋버튼 " + ph_first + "초> " + ph_second + "초";
+          function ph__timer_change_time() {
+            document.getElementById("ph_resetBN").innerHTML =
+              "리셋버튼 " + ph_first + "초> " + ph_second + "초";
 
-          document.getElementById("ph_resetBNsecond").onclick = function () {
-            audio_ph.play();
-            ph_time_60 = ph_second;
-          };
+            document.getElementById("ph_resetBNsecond").onclick = function () {
+              audio_ph.play();
+              ph_time_60 = ph_second;
+            };
 
-          document.getElementById("ph_resetBNsecond").innerHTML =
-            "리셋버튼 " + ph_second + "초";
+            document.getElementById("ph_resetBNsecond").innerHTML =
+              "리셋버튼 " + ph_second + "초";
 
-          document.getElementById("ph_annai_text").innerHTML =
-            "팬텀이 나타나는 시간은 처음은" +
-            ph_first +
-            "초, 그 뒤는" +
-            ph_second +
-            "초 입니다.";
+            document.getElementById("ph_annai_text").innerHTML =
+              "팬텀이 나타나는 시간은 처음은" +
+              ph_first +
+              "초, 그 뒤는" +
+              ph_second +
+              "초 입니다.";
+          }
+
+          ph__timer_change_time();
+          setInterval(ph__timer_change_time, 1000);
         </script>
       </div>
 
@@ -203,35 +258,42 @@
             bz_time_60 = bz_first;
           };
 
-          document.getElementById("bz_resetBN60").innerHTML =
-            "리셋버튼 " + bz_first + "초> " + bz_second + "초";
+          function bz_timer_change_time() {
+            document.getElementById("bz_resetBN60").innerHTML =
+              "리셋버튼 " + bz_first + "초> " + bz_second + "초";
 
-          document.getElementById("bz_resetBN120").onclick = function () {
-            audio_h_snunbora.play();
-            bz_time_60 = bz_second;
-          };
+            document.getElementById("bz_resetBN120").onclick = function () {
+              audio_h_snunbora.play();
+              bz_time_60 = bz_second;
+            };
 
-          document.getElementById("bz_resetBN120").innerHTML =
-            "리셋버튼 " + bz_second + "초";
+            document.getElementById("bz_resetBN120").innerHTML =
+              "리셋버튼 " + bz_second + "초";
 
-          document.getElementById("bz_annai").innerHTML =
-            "눈보라가 나타나는 시간은" +
-            bz_first +
-            "초, 그 뒤는" +
-            bz_second +
-            "초 입니다.";
+            document.getElementById("bz_annai").innerHTML =
+              "눈보라가 나타나는 시간은" +
+              bz_first +
+              "초, 그 뒤는" +
+              bz_second +
+              "초 입니다.";
+          }
+
+          bz_timer_change_time();
+          setInterval(bz_timer_change_time, 1000);
         </script>
       </div>
     </section>
 
     <div id="out">
       <button class="timer__btn" id="all_resetBN">전체 리셋</button>
+      ← 적용 누르고 전체리셋 한번 눌러야함
+      <!-- <button class="timer__btn" id="mute">뮤트</button> -->
     </div>
 
     <!-- 푸터 -->
     <footer id="footer">
       <p class="bold">Made by WF도라미야코</p>
-      <p class="sm_text">다람쥐 귀여워! 23 08 19 08</p>
+      <p class="sm_text">다람쥐 귀여워! 230210 2033</p>
       <br />
       <a href="./index.html">메인으로 돌아가기</a>
     </footer>
@@ -240,12 +302,16 @@
       reset_sound = new Audio("./sound/reset.mp3");
 
       document.getElementById("all_resetBN").onclick = function () {
-        reset_sound.volume = 0.5;
+        reset_sound.volume = 0.2;
         reset_sound.play();
-        ph_time = ph_first;
+
+        ph_time_60 = ph_first;
+        ph_time_120 = ph_second;
         bz_time_60 = bz_first;
         bz_time_120 = bz_second;
       };
+
+      //all sound mute
     </script>
   </body>
 </html>
