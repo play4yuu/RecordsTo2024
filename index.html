@@ -91,6 +91,16 @@
 
     <div class="box1" id="raid-al">
       <h1 class="txt title">정각 레이드 알람</h1>
+      <div class="raid-smtext-wrap">
+        <p id="today_raid"></p>
+        <p class="today_raid" id="today_raid_list"></p>
+      </div>
+
+      <label>
+        <input type="checkbox" id="raid_alarm0" placeholder="0" />
+        정각 알람
+      </label>
+
       <label>
         <input type="checkbox" id="raid_alarm1" placeholder="1" />
         1분전 알람
@@ -107,6 +117,7 @@
       </label>
       <script>
         function chked() {
+          var chk0 = document.getElementById("raid_alarm0").checked;
           var chk1 = document.getElementById("raid_alarm1").checked;
           var chk2 = document.getElementById("raid_alarm2").checked;
           var chk3 = document.getElementById("raid_alarm3").checked;
@@ -115,12 +126,81 @@
           let raid_hour = now.getHours();
           let raid_min = now.getMinutes();
           let raid_sec = now.getSeconds();
+          let raid_day = now.getDay();
 
           //   console.log(raid_min, ":", raid_sec);
 
+          var audio_0m = new Audio("./voice/00_raid_0m.mp3");
           var audio_1m = new Audio("./voice/01_raid_1m.mp3");
           var audio_2m = new Audio("./voice/02_raid_2m.mp3");
           var audio_3m = new Audio("./voice/03_raid_3m.mp3");
+
+          // 레이드 시간은 오전 10시 ~ 오전 2시
+          //9 10 11 12 13 14 15  16 17 18 19 20 21 22 23 24 1 2
+
+          var raid_time_text = document.querySelector("#today_raid");
+
+          var days = ["일", "월", "화", "수", "목", "금", "토"];
+
+          function raid_day_result() {
+            //7시 이전에는 이전 요일을 알려준다
+            if (raid_hour < 7) {
+              raid_day = raid_day - 1;
+            }
+            document.getElementById("today_raid").innerHTML =
+              "[ 지금은 레이드시간 입니다 ]";
+
+            if (0 < raid_day && raid_day < 5) {
+              //월~목일경우
+              //오전이면 (10~17)
+              if (5 < raid_hour < 18) {
+                if (raid_day % 2 == 0) {
+                  //짝수 요일 (화 목) 일경우
+                  document.getElementById("today_raid_list").innerHTML =
+                    days[raid_day] + " : " + "오전 화드 ";
+                } else {
+                  //홀수요일일경우
+                  document.getElementById("today_raid_list").innerHTML =
+                    days[raid_day] + " : " + "오전 블드";
+                }
+              }
+
+              //오후면 (18~24~02)
+              if (18 <= raid_hour <= 24 || 24 <= raid_hour <= 2) {
+                if (raid_day % 2 == 0) {
+                  //짝수 요일 (화 목) 일경우
+                  document.getElementById("today_raid_list").innerHTML =
+                    days[raid_day] + " : " + "오후 블드";
+                } else {
+                  //홀수요일일경우
+                  document.getElementById("today_raid_list").innerHTML =
+                    days[raid_day] + " : " + "오후 화드";
+                }
+              }
+            } else {
+              document.getElementById("today_raid_list").innerHTML =
+                days[raid_day] + " : " + "주말레이드";
+            }
+          }
+
+          if (
+            (10 <= raid_hour && raid_hour <= 24) ||
+            raid_hour == 1 ||
+            (raid_hour == 2 && raid_min == 00)
+          ) {
+            raid_time_text.classList.add("bold");
+            raid_day_result();
+          } else {
+            document.getElementById("today_raid").innerHTML =
+              "레이드 시간이 아닙니다.";
+          }
+
+          // 레이드 알람 관련
+          if (chk0 == true) {
+            if (raid_min == 0 && raid_sec == 0) {
+              audio_0m.play();
+            }
+          }
 
           if (chk1 == true) {
             if (raid_min == 59 && raid_sec == 0) {
@@ -270,10 +350,15 @@
           pre_audio.play();
         };
       </script>
+
       <p class="madeby">Made by WF도라미야코</p>
-      <span class="clova"
-        >삽입된 음성은 CLOVA Dubbing으로 제작한 AI 보이스입니다.</span
-      >
+
+      <div class="release">
+        <a href="./release.html">수정 노트</a>
+        <span class="clova"
+          >삽입된 음성은 CLOVA Dubbing으로 제작한 AI 보이스입니다.</span
+        >
+      </div>
     </div>
   </body>
 </html>
