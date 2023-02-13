@@ -162,14 +162,14 @@
                   document.getElementById("today_raid_list").innerHTML =
                     days[raid_day] + " : " + "오전 화드 ";
                 } else {
-                  //홀수요일일경우
+                  //홀수요일일경우 (월수)
                   document.getElementById("today_raid_list").innerHTML =
                     days[raid_day] + " : " + "오전 블드";
                 }
               }
 
               //오후면 (18~24~02)
-              if (18 <= raid_hour <= 24 || 24 <= raid_hour <= 2) {
+              if (18 <= raid_hour && raid_hour <= 24 && 24 <= raid_hour <= 2) {
                 if (raid_day % 2 == 0) {
                   //짝수 요일 (화 목) 일경우
                   document.getElementById("today_raid_list").innerHTML =
@@ -177,7 +177,7 @@
                 } else {
                   //홀수요일일경우
                   document.getElementById("today_raid_list").innerHTML =
-                    days[raid_day] + " : " + "오후 화드";
+                    days[raid_day] + " : " + "오후 화드 ";
                 }
               }
             } else {
