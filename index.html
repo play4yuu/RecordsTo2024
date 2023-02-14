@@ -339,29 +339,123 @@
     <!-- 푸터  -->
     <!-- 볼륨조절 및 미리듣기 -->
     <div class="footer">
-      <div class="vol">
-        <button id="preview" class="preview" onclick="play()">
-          놀람방지 소리 미리듣기
+      <div calss="footer-left-wrap">
+        <button id="darkmode" class="ModeBtn" onclick="darkmode()">
+          다크모드
+        </button>
+
+        <button id="lightmode" class="ModeBtn" onclick="lightmode()">
+          라이트모드
         </button>
       </div>
 
-      <script>
-        const pre_btn = document.getElementById("preview");
-        const pre_audio = new Audio("./voice/voice_test.mp3");
+      <div class="footer-right-wrap">
+        <div class="vol">
+          <button id="preview" class="preview" onclick="play()">
+            놀람방지 소리 미리듣기
+          </button>
+        </div>
 
-        pre_btn.onclick = function () {
-          pre_audio.play();
-        };
-      </script>
+        <script>
+          const dark_btn = document.getElementById("darkmode");
+          const light_btn = document.getElementById("lightmode");
 
-      <p class="madeby">Made by WF도라미야코</p>
+          const dark_bg = "#121212"; //뒷배경색
+          const dark_color = "#fff";
+          const dark_box_color = "#373737"; //밝은 회색
 
-      <div class="release">
-        <a href="./release.html">수정 노트</a>
-        <span class="clova"
-          >삽입된 음성은 CLOVA Dubbing으로 제작한 AI 보이스입니다.</span
-        >
+          const light_bg = "#fff";
+          const light_color = "#020715";
+          const light_box1 = "#faebd7"; //노랑
+          const light_box2 = "#ffd4d4"; //부농
+
+          const body_line = document.querySelector("body");
+          const btn_pre = document.getElementById("preview");
+          const btn_mode = document.getElementsByClassName("ModeBtn");
+
+          //맨위쪽 타임존 box
+          var timebox1 = document.querySelector(
+            "body > div.title-box > div:nth-child(1)"
+          );
+
+          var timebox2 = document.querySelector(
+            "body > div.title-box > div:nth-child(2)"
+          );
+
+          //아래쪽 분홍색 타이틀 박스들
+
+          let title_box = document.getElementsByClassName("title");
+
+          // 다크모드
+          dark_btn.onclick = function () {
+            //글자들
+            document.body.style.backgroundColor = dark_bg;
+            document.body.style.color = dark_color;
+
+            timebox1.style.backgroundColor = dark_box_color;
+            timebox2.style.backgroundColor = dark_box_color;
+
+            for (let i = 0; i < title_box.length; i++) {
+              title_box[i].style.backgroundColor = dark_box_color;
+            }
+
+            //몸체 선
+            body_line.style.border = "1px solid #bbb";
+
+            //버튼들
+            btn_pre.style.backgroundColor = dark_box_color;
+            btn_pre.style.color = dark_color;
+
+            for (let i = 0; i < btn_mode.length; i++) {
+              btn_mode[i].style.backgroundColor = dark_box_color;
+              btn_mode[i].style.color = dark_color;
+            }
+          };
+
+          // 라이트모드
+          light_btn.onclick = function () {
+            document.body.style.backgroundColor = light_bg;
+            document.body.style.color = light_color;
+
+            timebox1.style.backgroundColor = light_box1;
+            timebox2.style.backgroundColor = light_box1;
+
+            for (let i = 0; i < title_box.length; i++) {
+              title_box[i].style.backgroundColor = light_box2;
+            }
+
+            //몸체 선
+            body_line.style.border = "1px solid #020715";
+
+            //버튼들
+            btn_pre.style.backgroundColor = "";
+            btn_pre.style.color = light_color;
+
+            for (let i = 0; i < btn_mode.length; i++) {
+              btn_mode[i].style.backgroundColor = "";
+              btn_mode[i].style.color = light_color;
+            }
+          };
+        </script>
+
+        <script>
+          const pre_btn = document.getElementById("preview");
+          const pre_audio = new Audio("./voice/voice_test.mp3");
+
+          pre_btn.onclick = function () {
+            pre_audio.play();
+          };
+        </script>
+
+        <p class="madeby">Made by WF도라미야코</p>
       </div>
     </div>
+
+    <div class="release">
+      <a href="./release.html">수정 노트</a>
+    </div>
+    <span class="clova"
+      >삽입된 음성은 CLOVA Dubbing으로 제작한 AI 보이스입니다.</span
+    >
   </body>
 </html>
