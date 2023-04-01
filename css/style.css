@@ -1,0 +1,427 @@
+@import url(./reset.css);
+@import url(./hello.css);
+
+@font-face {
+  font-family: "NEXON Lv2 Gothic";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NEXON Lv1 Gothic OTF";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MaplestoryOTFBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  font-family: "NEXON Lv2 Gothic";
+}
+
+#body_wrap {
+  width: 1000px;
+  height: 600px;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+  position: relative;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.icon {
+  border-radius: 3px;
+  scale: 1.1;
+}
+
+#bookmarker {
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  top: -13px;
+  right: 50px;
+
+  z-index: 1;
+
+  filter: invert(10%) sepia(55%) saturate(7299%) hue-rotate(351deg)
+    brightness(106%) contrast(89%);
+}
+
+/* wrap-------------------------------- */
+
+.main_wrap {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: lrelative;
+  padding: 30px 0px;
+  grid-template: "icon left right"/ 0.2fr 1fr 1fr;
+}
+
+/* 아이콘 */
+#icon_wrap {
+  grid-area: icon;
+  width: 100%;
+  height: auto;
+
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-columns: 1fr;
+
+  place-items: center;
+}
+
+/* 왼쪽 */
+#left_wrap {
+  grid-area: left;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.time_wrap {
+  width: 95%;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+
+  border-radius: 20px;
+}
+
+.time_wrap__top {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+}
+
+.time_wrap__bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  font-size: 3rem;
+}
+
+.quo_wrap {
+  width: 95%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+}
+
+.quo_wrap_div {
+  display: flex;
+  flex-direction: column;
+
+  width: 75%;
+  height: 80%;
+  justify-content: space-evenly;
+  align-items: center;
+
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+#quo_text {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+#quo_text::first-letter {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#quo_au {
+  width: 100%;
+  text-align: right;
+}
+
+.weather_wrap {
+  width: 95%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.5);
+
+  border-radius: 20px;
+}
+
+#weather__bg {
+  width: 90%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#weather__icon {
+  width: 45%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather__right {
+  width: 50%;
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.weather__right__right {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* 왼쪽 (투두부분) */
+#right_wrap {
+  grid-area: right;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 93%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+
+  position: relative;
+}
+
+.right_wrap {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  height: 90%;
+}
+
+.right_wrap > h1 {
+  font-size: 2rem;
+  font-weight: bold;
+
+  padding-left: 3px;
+  margin-bottom: 20px;
+}
+
+label > span {
+  width: 250px;
+}
+
+label > button {
+  background: url("https://cdn-icons-png.flaticon.com/512/1828/1828945.png");
+  background-size: 100% 100%;
+  width: 20px;
+  height: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.todo_list {
+  overflow: hidden;
+}
+
+.todo_list > li {
+  list-style: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+
+  border-radius: 15px;
+
+  font-size: 1.2rem;
+
+  padding: 15px 0px;
+  margin-bottom: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  /* box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5); */
+}
+
+.todo_list > li > label {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#add_todo_list_wrap {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 0 0 20px 20px;
+
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+
+  width: 422.719px;
+  height: 60px;
+
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#add_todo_list_wrap > label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 25px;
+}
+
+#add_todo_list_wrap > label > input[type="text"]:nth-child(2) {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+
+  width: 300px;
+  height: 30px;
+
+  font-size: 1rem;
+  padding-left: 10px;
+}
+
+#add_todo_list_btn {
+  background: url(https://cdn-icons-png.flaticon.com/512/9572/9572923.png);
+  border: none;
+
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  filter: invert(67%) sepia(11%) saturate(11%) hue-rotate(314deg)
+    brightness(99%) contrast(96%);
+
+  margin: 0px 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+#npc1 {
+  position: absolute;
+
+  width: 160px;
+  height: 250px;
+
+  /* background-image: url("../resource/npc/mushroom_02.png"); */
+  /* background-image: url(../resource/npc/slime_02.png); */
+
+  background-image: url(../resource/npc/rock_soul_01.png);
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+
+  bottom: -20px;
+  right: -110px;
+}
+
+#npc1:hover {
+  transform: translateY(-10px);
+}
+
+.bubble {
+  position: absolute;
+  font-family: "MaplestoryOTFBold";
+
+  width: 330px;
+  height: 80px;
+  padding: 10px 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  border: #020715 2px solid;
+
+  border-radius: 20px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  letter-spacing: 1px;
+}
+
+.bubble_bold {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+/* js에서 건들이는거 중요한거 */
+.hidden {
+  display: none;
+}
