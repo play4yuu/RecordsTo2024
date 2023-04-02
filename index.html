@@ -37,6 +37,7 @@
             fill="currentColor"
             class="bi bi-bookmark-fill"
             viewBox="0 0 16 16"
+            id="bookmarker_id"
           >
             <path
               d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"
@@ -48,21 +49,44 @@
             src="./resource/icon/maple_island_icon.png"
             class="icon"
             alt="icon"
+            id="icon_maple"
           />
-          <img src="./resource/icon/icon_elinia.png" class="icon" alt="icon" />
-          <img src="./resource/icon/icon_erev.png" class="icon" alt="icon" />
+          <img
+            src="./resource/icon/icon_elinia.png"
+            class="icon"
+            alt="icon"
+            id="icon_elinia"
+          />
+          <img
+            src="./resource/icon/icon_erev.png"
+            class="icon"
+            alt="icon"
+            id="icon_erev"
+          />
           <img
             src="./resource/icon/icon_timetemple.png"
             class="icon"
             alt="icon"
+            id="icon_timetemple"
           />
-          <img src="./resource/icon/icon_arcana.png" class="icon" alt="icon" />
+          <img
+            src="./resource/icon/icon_arcana.png"
+            class="icon"
+            alt="icon"
+            id="icon_arcana"
+          />
           <img
             src="./resource/icon/mirror_day_icon.png"
             class="icon"
             alt="icon"
+            id="icon_mirrorday"
           />
-          <img src="./resource/icon/icon_happyv.png" class="icon" alt="icon" />
+          <img
+            src="./resource/icon/icon_happyv.png"
+            class="icon"
+            alt="icon"
+            id="icon_happyv"
+          />
         </div>
         <div id="left_wrap">
           <div class="time_wrap">
@@ -95,17 +119,20 @@
           </div>
         </div>
 
-        <div id="right_wrap">
+        <div id="right_wrap_p">
           <div class="right_wrap">
+            <!-- 리스트 갯수 초과 알람용 -->
+            <div class="hidden al_right">오늘 할일이 너무 많아요</div>
+
             <h1>오늘 할일</h1>
             <ul class="todo_list">
-              <li>
+              <!-- <li>
                 <label>
                   <input type="checkbox" />
                   <span>할 일2</span>
                   <button></button>
                 </label>
-              </li>
+              </li> -->
             </ul>
 
             <form id="add_todo_list_wrap">
@@ -125,7 +152,7 @@
         </div>
       </div>
 
-      <div id="npc1"></div>
+      <div onmouseover="mouseover()" onmouseleave="mouseout()" id="npc1"></div>
       <!-- <div id="npc2"></div> -->
       <div class="bubble hidden">
         <p id="bubble_text"></p>
@@ -134,7 +161,7 @@
     <script src="./js/hello.js"></script>
     <script src="./js/time.js"></script>
     <script src="./js/quo.js"></script>
-    <script src="./js/todo.js"></script>
+    <script src="./js/new_todo.js"></script>
     <script src="./js/bg.js"></script>
   </body>
 </html>

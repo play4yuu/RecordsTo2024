@@ -1,6 +1,6 @@
 console.log("hello.js 시작");
 
-// 배경--------------------------------------------------------------
+// 처음시작 랜덤 배경------------------------------
 const background = document.querySelector("body");
 const background_atsume = [
   "./resource/background/forest.png",
@@ -24,7 +24,7 @@ function image() {
 
 image();
 
-// --------------------------------------------------------------------
+// --------------------------
 
 const input_text = document.querySelector(
   "#body_wrap > div > form > label > input[type=text]:nth-child(1)"
@@ -67,3 +67,43 @@ input_btn.addEventListener("click", function (e) {
     }, 3000);
   }, 1000);
 });
+
+// 만약 이름이 입력되어있다면 바로 메인화면으로 넘어가기
+function greeting() {
+  if (localStorage.getItem("name") == null) {
+    return;
+  } else {
+    const input_text_value = localStorage.getItem("name");
+    hello_wrap.style.display = "none";
+    main_wrap.classList.remove("hidden");
+
+    bubble.classList.remove("hidden");
+    bubble_text.innerHTML = `<span class="bubble_bold">${input_text_value}</span>용사님, 어서오세요.`;
+
+    setTimeout(function () {
+      bubble.classList.add("hidden");
+      bubble.style.transition = "all 1.5s ease";
+    }, 2300);
+  }
+}
+
+greeting();
+
+// ----- 북마크 ---------
+
+const bookmaker = document.querySelector("#bookmarker");
+
+bookmaker.addEventListener("click", rename);
+
+function rename() {
+  if (localStorage.getItem("name") == null) {
+    return;
+  } else {
+    main_wrap.classList.add("hidden");
+    hello_wrap.style.opacity = 1;
+    hello_wrap.style.display = "flex";
+    bubble.classList.add("hidden");
+
+    input_text.value = "";
+  }
+}
