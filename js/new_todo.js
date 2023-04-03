@@ -7,6 +7,10 @@ const todo_input_btn = document.querySelector("#add_todo_list_btn");
 const TODO_KEY = "todos";
 let todos = [];
 
+function saveTodos() {
+  localStorage.setItem(TODO_KEY, JSON.stringify(todos));
+}
+
 function delTodo(event) {
   li = event.target.parentElement.parentElement;
   console.log("li.id = ", li.id);
@@ -40,6 +44,7 @@ function PaintTodo(newTodo) {
 
   span.innerHTML = newTodo.text;
   todoList.appendChild(li);
+  saveTodos();
 }
 
 function handle_todo_submit(e) {
@@ -72,16 +77,11 @@ function handle_todo_submit(e) {
 
 todo_input_btn.addEventListener("click", handle_todo_submit);
 
-function saveTodos() {
-  localStorage.setItem(TODO_KEY, JSON.stringify(todos));
-}
-
 const saveTOdos = localStorage.getItem(TODO_KEY);
 if (saveTOdos !== null) {
+  console.log("불러오기");
   const parsedTodos = JSON.parse(saveTOdos);
-  parsedTodos.forEach((todo) => PaintTodo(todo));
+  //   parsedTodos.forEach((todo) => PaintTodo(todo));
+  parsedTodos.forEach(PaintTodo);
+  todos = parsedTodos;
 }
-
-a = [11, 22, 33, 44];
-a = a.filter((todo) => todo !== 22);
-console.log(a);
