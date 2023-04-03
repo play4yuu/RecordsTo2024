@@ -13,7 +13,6 @@ function saveTodos() {
 
 function delTodo(event) {
   li = event.target.parentElement.parentElement;
-  console.log("li.id = ", li.id);
   li.remove();
 
   todos = todos.filter((todo) => todo.id !== parseInt(li.id));
@@ -83,5 +82,7 @@ if (saveTOdos !== null) {
   const parsedTodos = JSON.parse(saveTOdos);
   //   parsedTodos.forEach((todo) => PaintTodo(todo));
   parsedTodos.forEach(PaintTodo);
+  console.log(todos, parsedTodos);
   todos = parsedTodos;
+  localStorage.setItem(TODO_KEY, JSON.stringify(todos));
 }

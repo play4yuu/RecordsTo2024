@@ -1,5 +1,3 @@
-console.log("hello.js 시작");
-
 // 처음시작 랜덤 배경------------------------------
 const background = document.querySelector("body");
 const background_atsume = [
@@ -19,7 +17,7 @@ var random_num_bg = Math.floor(Math.random() * background_atsume.length);
 
 function image() {
   background.style.backgroundImage = `url(${background_atsume[random_num_bg]})`;
-  console.log("image");
+  // console.log("image");
 }
 
 image();
