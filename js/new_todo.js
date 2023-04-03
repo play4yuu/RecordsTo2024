@@ -4,9 +4,18 @@ const todo_input_text = document.querySelector("#add_todo_list_input");
 const todo_input_btn = document.querySelector("#add_todo_list_btn");
 // const del_button = document.querySelector(button);
 
-const todos = [];
-function saveTodos() {
-  localStorage.setItem("todos", todos);
+const TODO_KEY = "todos";
+let todos = [];
+
+function delTodo(event) {
+  li = event.target.parentElement.parentElement;
+  console.log("li.id = ", li.id);
+  li.remove();
+
+  todos = todos.filter((todo) => todo.id !== parseInt(li.id));
+
+  console.log(todos);
+  saveTodos();
 }
 
 function PaintTodo(newTodo) {
@@ -15,9 +24,7 @@ function PaintTodo(newTodo) {
     return;
   }
   const li = document.createElement("li");
-  const li_date = new Date();
-  const li_id = li_date.getTime();
-  li.setAttribute("id", li_id);
+  li.id = newTodo.id;
   const label = document.createElement("label");
   const input_chkbox = document.createElement("input");
   input_chkbox.setAttribute("type", "checkbox");
@@ -31,9 +38,7 @@ function PaintTodo(newTodo) {
   label.appendChild(btn);
   li.appendChild(label);
 
-  span.innerHTML = newTodo;
-
-  //   console.log(li);
+  span.innerHTML = newTodo.text;
   todoList.appendChild(li);
 }
 
@@ -51,18 +56,32 @@ function handle_todo_submit(e) {
   }
 
   const newTodo = todo_input_text.value;
-  PaintTodo(newTodo);
   todo_input_text.value = "";
-  todos.push(newTodo);
+  const newTodoObj = {
+    text: newTodo,
+    id: Date.now(),
+  };
+  //   console.log(todos);
+  console.log("❤", newTodoObj);
+  //   console.log(newTodoObj.text);
 
+  todos.push(newTodoObj);
+  PaintTodo(newTodoObj);
   saveTodos();
 }
 
 todo_input_btn.addEventListener("click", handle_todo_submit);
 
-// 삭제 관련
-
-function delTodo(event) {
-  li = event.target.parentElement.parentElement;
-  li.remove();
+function saveTodos() {
+  localStorage.setItem(TODO_KEY, JSON.stringify(todos));
 }
+
+const saveTOdos = localStorage.getItem(TODO_KEY);
+if (saveTOdos !== null) {
+  const parsedTodos = JSON.parse(saveTOdos);
+  parsedTodos.forEach((todo) => PaintTodo(todo));
+}
+
+a = [11, 22, 33, 44];
+a = a.filter((todo) => todo !== 22);
+console.log(a);

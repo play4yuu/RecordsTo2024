@@ -433,13 +433,15 @@ input[type="checkbox"] {
   transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: rgb(250, 0, 0);
   text-shadow: 0 0 5px rgb(255, 255, 255);
   border-radius: 20px;
   font-weight: bolder;
   width: 300px;
-  height: 100px;
+  height: 90px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid black;
 }
 
 /* js에서 건들이는거 중요한거 */
