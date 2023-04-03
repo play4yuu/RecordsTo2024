@@ -110,7 +110,7 @@ function quo_random() {
   quo_text.style.opacity = 1;
 
   var quo_random_num = Math.floor(Math.random() * quo_list.length);
-  console.log(quo_random_num);
+  // console.log(quo_random_num);
 
   //   console.log(quo_list[quo_random_num].quote);
   //   console.log(quo_list[quo_random_num].author);

@@ -2,7 +2,7 @@ const API_KEY = "46267eb26029c14e21de9202ac7894bb";
 const lang = "kr";
 
 navigator.geolocation.getCurrentPosition(function (pos) {
-  console.log(pos);
+  // console.log(pos);
   var lat = pos.coords.latitude;
   var lon = pos.coords.longitude;
 

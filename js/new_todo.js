@@ -16,8 +16,7 @@ function delTodo(event) {
   li.remove();
 
   todos = todos.filter((todo) => todo.id !== parseInt(li.id));
-
-  console.log(todos);
+  //   console.log(todos);
   saveTodos();
 }
 
@@ -65,10 +64,6 @@ function handle_todo_submit(e) {
     text: newTodo,
     id: Date.now(),
   };
-  //   console.log(todos);
-  console.log("❤", newTodoObj);
-  //   console.log(newTodoObj.text);
-
   todos.push(newTodoObj);
   PaintTodo(newTodoObj);
   saveTodos();
@@ -78,11 +73,9 @@ todo_input_btn.addEventListener("click", handle_todo_submit);
 
 const saveTOdos = localStorage.getItem(TODO_KEY);
 if (saveTOdos !== null) {
-  console.log("불러오기");
   const parsedTodos = JSON.parse(saveTOdos);
   //   parsedTodos.forEach((todo) => PaintTodo(todo));
   parsedTodos.forEach(PaintTodo);
-  console.log(todos, parsedTodos);
   todos = parsedTodos;
   localStorage.setItem(TODO_KEY, JSON.stringify(todos));
 }
