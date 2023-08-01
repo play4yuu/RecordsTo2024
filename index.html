@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -118,7 +118,9 @@
         <input type="checkbox" id="raid_alarm3" placeholder="3" />
         3분전 알람
       </label>
+
       <script>
+        //레이드 관련 체크
         function chked() {
           var chk0 = document.getElementById("raid_alarm0").checked;
           var chk1 = document.getElementById("raid_alarm1").checked;
@@ -156,7 +158,7 @@
             if (0 < raid_day && raid_day < 5) {
               //월~목일경우
               //오전이면 (10~17)
-              if (5 < raid_hour < 18) {
+              if (5 < raid_hour && raid_hour < 18) {
                 if (raid_day % 2 == 0) {
                   //짝수 요일 (화 목) 일경우
                   document.getElementById("today_raid_list").innerHTML =
@@ -169,7 +171,10 @@
               }
 
               //오후면 (18~24~02)
-              if (18 <= raid_hour && raid_hour <= 24 && 24 <= raid_hour <= 2) {
+              if (
+                (18 <= raid_hour && raid_hour <= 24) ||
+                (0 <= raid_hour && raid_hour < 2)
+              ) {
                 if (raid_day % 2 == 0) {
                   //짝수 요일 (화 목) 일경우
                   document.getElementById("today_raid_list").innerHTML =
@@ -189,7 +194,7 @@
           if (
             (10 <= raid_hour && raid_hour <= 24) ||
             raid_hour == 1 ||
-            (raid_hour == 2 && raid_min == 00)
+            (raid_hour == 2 && raid_min == 0)
           ) {
             raid_time_text.classList.add("bold");
             raid_day_result();
