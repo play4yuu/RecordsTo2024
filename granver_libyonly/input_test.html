@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="inputs">
+      <h2>시간 입력</h2>
+      <input type="text" id="0ph_first" placeholder="팬텀 처음 시간" />
+      <input type="text" id="0ph_second" placeholder="팬텀 반복 시간" />
+      <input type="text" id="0bz_first" placeholder="눈보라 처음 시간" />
+      <input type="text" id="0bz_second" placeholder="눈보라 반복 시간" />
+    </section>
+
+    <button id="apply">적용</button>
+
+    <div class="inputs0">
+      <p id="hold1">-</p>
+      <p id="hold2">-</p>
+      <p id="hold3">-</p>
+      <p id="hold4">-</p>
+    </div>
+
+    <script>
+      var applybtn = document.getElementById("apply");
+      var first = document.getElementById("0ph_first");
+      var second = document.getElementById("0ph_second");
+      var third = document.getElementById("0bz_first");
+      var fourth = document.getElementById("0bz_second");
+
+      function apply() {
+        console.log(first.value);
+        document.getElementById("hold1").innerHTML = first.value;
+        document.getElementById("hold2").innerHTML = second.value;
+        document.getElementById("hold3").innerHTML = third.value;
+        document.getElementById("hold4").innerHTML = fourth.value;
+      }
+
+      applybtn.addEventListener("click", apply);
+    </script>
+  </body>
+</html>

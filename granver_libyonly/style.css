@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+@font-face {
+  font-family: "NEXON Lv2 Gothic";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  width: 500px;
+  height: auto;
+  margin: 10px;
+  padding: 15px 20px;
+  font-family: "NEXON Lv2 Gothic";
+  border: 1px solid #020715;
+}
+
+/* 헤더 */
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #020715;
+  font-weight: bold;
+}
+
+#header > h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* 타이머 */
+
+/* 푸터 */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: 10px;
+  margin: 10px 0;
+  border-top: 1px solid #020715;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.sm_text {
+  font-size: 12px;
+  color: rgba(2, 7, 21, 0.5);
+}
+
+#timer-Phantom {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: stretch;
+}
+
+#timer > div > h1 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.timer_text {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.timers {
+  display: flex;
+  flex-direction: column;
+
+  padding: 25px 0px;
+}
+
+.timer__btn {
+  padding: 3px 5px;
+  margin: 3px;
+}
+
+.timers {
+  padding-left: 10px;
+}
+
+#timer-Phantom {
+  background-color: rgba(255, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+#timer-Blizzard {
+  background-color: rgba(0, 0, 255, 0.1);
+}
+
+#input_time {
+  display: flex;
+  padding: 10px 0px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #020715;
+  width: auto;
+}
+
+#input_time > .input_times {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
+}
+
+.loop {
+  display: flex;
+  margin: 3px 0px;
+}
+
+input {
+  display: flex;
+  width: 130px;
+  margin-left: 3px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.tekiyou {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#apply {
+  width: 100%;
+  padding: 10px 0px;
+  border: 1px solid #020715;
+  border-radius: 5px;
+  background-color: #020715;
+  color: white;
+  font-weight: bold;
+}
+
+#genzai_time {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0px;
+  font-weight: bold;
+}
+
+#genzai_time_line1,
+#genzai_time_line2 {
+  font-size: 13px;
+}

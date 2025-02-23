@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>글렌베르나 타이머</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- 구현해야 하는 것들
+    1. 0, 57, 57*2 ... 57초마다 타이머 (여자목소리1), 5초전부터 알람+배경색변화
+    2. 0, 1분, 3분, 5분... 타이머 (눈보라, 남자목소리1) 5초전부터 알람+배경색변화 -->
+
+    <header id="header">
+      <h1>글렌베르나 어려움 타이머</h1>
+    </header>
+
+    <!-- 타이머 -->
+    <section id="timer">
+      <div class="timers" id="timer-Phantom">
+        <h1>팬텀 타이머</h1>
+        <p calss="sm_text" id="ph_annai_text"></p>
+        <br />
+
+        <div class="timer__ui">
+          <!-- 남은시간 -->
+          <div id="ph_timer" class="timer_text"></div>
+
+          <button class="timer__btn" id="ph_resetBN"></button>
+          <button class="timer__btn" id="ph_resetBNsecond"></button>
+        </div>
+
+        <script>
+          // 팬텀 관련 스크립트
+          //   audio_ph6 = new Audio("./sound/phtom.mp3");
+          //   audio_p5 = new Audio("./sound/p5.mp3");
+          //   audio_p4 = new Audio("./sound/p4.mp3");
+          //   audio_p3 = new Audio("./sound/p3.mp3");
+          //   audio_p2 = new Audio("./sound/p2.mp3");
+          //   audio_p1 = new Audio("./sound/p1.mp3");
+          //   audio_ph = new Audio("./sound/h_pop.mp3");
+
+          audio_ph6 = new Audio("./sound_change/01_phantom.mp3");
+          audio_p5 = new Audio("./sound_change/02_5.mp3");
+          audio_p4 = new Audio("./sound_change/03_4.mp3");
+          audio_p3 = new Audio("./sound_change/04_3.mp3");
+          audio_p2 = new Audio("./sound_change/05_2.mp3");
+          audio_p1 = new Audio("./sound_change/06_1.mp3");
+          audio_ph = new Audio("./sound/h_pop.mp3");
+
+          const ph_first = 53;
+          const ph_second = 55;
+
+          var ph_time_60 = ph_first;
+          var ph_time_120 = ph_second;
+          var sec = "";
+
+          var ph_bgcolor = document.getElementById("timer-Phantom");
+
+          var x = setInterval(function () {
+            ph_time_60--;
+            ph_time_120--;
+
+            sec = ph_time_60;
+            document.getElementById("ph_timer").innerHTML = sec + "초 남음";
+
+            const audioFiles = {
+              55: "audio_ph6.play()",
+              6: "audio_ph6.play()",
+              5: "audio_p5.play()",
+              4: "audio_p4.play()",
+              3: "audio_p3.play()",
+              2: "audio_p2.play()",
+              1: "audio_p1.play()",
+              0: "audio_ph.play()",
+            };
+
+            if (ph_time_60 in audioFiles) {
+              eval(audioFiles[ph_time_60]);
+            }
+
+            if (ph_time_60 < 5) {
+              ph_bgcolor.style.backgroundColor = "red";
+              ph_bgcolor.style.color = "white";
+            } else {
+              ph_bgcolor.style.backgroundColor = "#ffe5e5";
+              ph_bgcolor.style.color = "black";
+            }
+
+            if (ph_time_60 <= 0) {
+              ph_time_60 = ph_second;
+            }
+          }, 1000);
+
+          //"pt_resetBN" 버튼을 누르면 ph_time을 570으로 초기화
+          document.getElementById("ph_resetBN").onclick = function () {
+            audio_ph.play();
+            ph_time_60 = ph_first;
+          };
+
+          document.getElementById("ph_resetBN").innerHTML =
+            "리셋버튼 " + ph_first + "초> " + ph_second + "초";
+
+          document.getElementById("ph_resetBNsecond").onclick = function () {
+            audio_ph.play();
+            ph_time_60 = ph_second;
+          };
+
+          document.getElementById("ph_resetBNsecond").innerHTML =
+            "리셋버튼 " + ph_second + "초";
+
+          document.getElementById("ph_annai_text").innerHTML =
+            "팬텀이 나타나는 시간은 처음은" +
+            ph_first +
+            "초, 그 뒤는" +
+            ph_second +
+            "초 입니다.";
+        </script>
+      </div>
+
+      <!-- ========================= 으아아아ㅏ악 ========================= -->
+
+      <!-- 눈보라 타이머부분 -->
+      <div class="timers" id="timer-Blizzard">
+        <h1>눈보라 타이머</h1>
+        <p calss="sm_text" id="bz_annai"></p>
+        <br />
+
+        <div class="timer__ui">
+          <!-- 남은시간 -->
+          <div id="bz_timer" class="timer_text"></div>
+
+          <button class="timer__btn" id="bz_resetBN60"></button>
+          <button class="timer__btn" id="bz_resetBN120"></button>
+        </div>
+
+        <script>
+          // 눈보라 사운드 설정
+
+          audio_nunbora = new Audio("./sound/nunbora.mp3");
+          audio_s5 = new Audio("./sound/s5.mp3");
+          audio_s4 = new Audio("./sound/s4.mp3");
+          audio_s3 = new Audio("./sound/s3.mp3");
+          audio_s2 = new Audio("./sound/s2.mp3");
+          audio_s1 = new Audio("./sound/s1.mp3");
+          audio_h_snunbora = new Audio("./sound/h_mee.mp3");
+
+          //기본 설정
+          const bz_first = 58;
+          const bz_second = 120;
+
+          let bz_time_60 = bz_first;
+          let bz_time_120 = bz_second;
+
+          let bz_interval = 1;
+          let bz_sec = "";
+
+          const bz_bgcolor = document.querySelector("#timer-Blizzard");
+
+          let bz_x = setInterval(function () {
+            bz_time_60--;
+            bz_time_120--;
+            bz_sec = bz_time_60;
+            document.getElementById("bz_timer").innerHTML = bz_sec + "초 남음";
+
+            const bz_audioFiles = {
+              6: "audio_nunbora.play()",
+              5: "audio_s5.play()",
+              4: "audio_s4.play()",
+              3: "audio_s3.play()",
+              2: "audio_s2.play()",
+              1: "audio_s1.play()",
+              0: "audio_h_snunbora.play()",
+            };
+
+            if (bz_time_60 in bz_audioFiles) {
+              eval(bz_audioFiles[bz_time_60]);
+            }
+
+            if (bz_time_60 < 5) {
+              bz_bgcolor.style.backgroundColor = "blue";
+              bz_bgcolor.style.color = "white";
+            } else {
+              bz_bgcolor.style.backgroundColor = "#e5e5ff";
+              bz_bgcolor.style.color = "black";
+            }
+
+            if (bz_time_60 <= 0) {
+              bz_time_60 = bz_second;
+            }
+          }, 1000);
+
+          document.getElementById("bz_resetBN60").onclick = function () {
+            audio_h_snunbora.play();
+            bz_time_60 = bz_first;
+          };
+
+          document.getElementById("bz_resetBN60").innerHTML =
+            "리셋버튼 " + bz_first + "초> " + bz_second + "초";
+
+          document.getElementById("bz_resetBN120").onclick = function () {
+            audio_h_snunbora.play();
+            bz_time_60 = bz_second;
+          };
+
+          document.getElementById("bz_resetBN120").innerHTML =
+            "리셋버튼 " + bz_second + "초";
+
+          document.getElementById("bz_annai").innerHTML =
+            "눈보라가 나타나는 시간은" +
+            bz_first +
+            "초, 그 뒤는" +
+            bz_second +
+            "초 입니다.";
+        </script>
+      </div>
+    </section>
+
+    <div id="out">
+      <button class="timer__btn" id="all_resetBN">전체 리셋</button>
+    </div>
+
+    <!-- 푸터 -->
+    <footer id="footer">
+      <p class="bold">Made by WF도라미야코</p>
+      <p class="sm_text">다람쥐 귀여워! 23 08 19 08</p>
+      <br />
+      <a href="./testpage.html">시간 짧은 테스트 페이지</a>
+    </footer>
+
+    <script>
+      reset_sound = new Audio("./sound/reset.mp3");
+
+      document.getElementById("all_resetBN").onclick = function () {
+        reset_sound.volume = 0.5;
+        reset_sound.play();
+        ph_time = ph_first;
+        bz_time_60 = bz_first;
+        bz_time_120 = bz_second;
+      };
+    </script>
+  </body>
+</html>
