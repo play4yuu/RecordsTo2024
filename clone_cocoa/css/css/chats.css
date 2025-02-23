@@ -1,0 +1,102 @@
+/* 큰설정 */
+.chats-wrap {
+  display: flex;
+  flex-direction: column;
+  /* margin: 10px 30px 90px 30px; */
+}
+
+.chats {
+  padding: 5px 30px 5px 30px;
+}
+
+.chats:hover {
+  transition: 0.05s all ease-in-out;
+  background-color: var(--blue-50);
+}
+
+.chat-room {
+  display: flex;
+  height: 60px;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 0px;
+  justify-content: space-between;
+  /* background-color: #f0f0f0; */
+  border-radius: 10px;
+}
+
+.unpush {
+  color: #999999;
+}
+
+.unpush:hover {
+  transition: all 0.15s ease;
+  color: var(--black-main);
+}
+
+/* 왼쪽 */
+.chat-room-left-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: baseline;
+  color: var(--black-main);
+}
+
+.chat-room__img {
+  width: 60px;
+  height: 60px;
+  background-color: none;
+  border-radius: 20px;
+  margin: 15px 10px 15px 0px;
+  border: #999999 solid 1px;
+}
+
+.chat__text-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.chat__title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat__title {
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px 8px 6px 8px;
+}
+
+.chat__peo-num {
+  opacity: 0.5;
+}
+
+div > p.chat__pin {
+  margin-left: 4px;
+  opacity: 0.5;
+}
+
+.chat__text {
+  opacity: 0.6;
+  margin-left: 8px;
+}
+
+/* 오른쪽 */
+.chat__right {
+  color: var(--black-main);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.chat-time {
+  font-size: 13px;
+  display: flex;
+  margin-bottom: 2px;
+  opacity: 0.5;
+}

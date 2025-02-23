@@ -1,0 +1,225 @@
+/*  ====== 지갑부분 ======== */
+/* 임포트css/css */
+
+/* 맨윗줄 지갑> */
+.wallet {
+  height: 200px;
+  background-color: #ffe155;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px 30px;
+}
+
+/* -- */
+
+.wallet__title__left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wallet__title__right {
+  display: flex;
+  align-items: center;
+}
+
+.wallet__title {
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
+  font-size: 20px;
+  margin: 5px 0px 5px 0px;
+  font-weight: bold;
+}
+
+.wallet__title-text {
+  font-size: 25px;
+  font-weight: bolder;
+  margin-right: 5px;
+}
+
+.wallet__title__left > .bi-chevron-right {
+  width: 20px;
+  height: auto;
+}
+
+.wallet__title-right-text {
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+/* 주민등록등본 어쩌구 */
+.wallet-ad {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 10px 0px;
+  box-shadow: #aaaaaa 0px 1px 5px;
+}
+
+.wallet-ad__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.wallet-ad__left > .bi {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.wallet__pay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0px;
+}
+
+.wallet__pay__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 0px;
+}
+
+.wallet__pay__left > .bi-chat-heart-fill {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.wallet__pay__left-text,
+.wallet__pay__right-money {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.wallet-btn {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.wallet__pay__left {
+  font-size: 17px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.wallet-btn__left__btn {
+  margin-right: 10px;
+}
+
+.wallet-btn__right {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.wallet-btn__right__text {
+  display: flex;
+  align-items: center;
+  margin-left: 7px;
+}
+
+/* 더보기 44 */
+.more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 30px;
+  margin-bottom: 25px;
+}
+
+.more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 30px 25px 30px;
+  flex-direction: column;
+}
+
+.more-line__first {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.more-line__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.more-line__img {
+  width: 50px;
+  border-radius: 10px;
+  height: auto;
+  margin-bottom: 8px;
+  filter: invert(22%) sepia(1%) saturate(698%) hue-rotate(132deg)
+    brightness(101%) contrast(83%);
+}
+
+.more-line__item:hover {
+  transform: scale(1.05);
+  font-weight: bold;
+  transition: all 0.1s ease;
+}
+
+.more-line__text {
+  font-size: 14px;
+}
+
+/* ====== 색변환 및 tran 관련 */
+
+/* ===월렛쪽 */
+.wallet-ad:active {
+  transition: all 0.1s ease;
+  box-shadow: inset 3px 3px 8px #bbbbbb;
+  border: #aaaaaa 5x solid inset;
+}
+
+/* === 44 아이콘쪽 */
+/* 노란색 */
+body > div.more > ul:nth-child(1) > il:nth-child(2):hover,
+body > div.more > ul:nth-child(4) > il:nth-child(3):hover,
+body > div.more > ul:nth-child(4) > il:nth-child(4):hover,
+body > div.more > ul:nth-child(2) > il:nth-child(4):hover {
+  font-weight: blod;
+  filter: invert(82%) sepia(26%) saturate(2483%) hue-rotate(350deg)
+    brightness(91%) contrast(82%);
+}
+
+/* 분홍색 */
+body > div.more > ul:nth-child(3) > il:nth-child(1):hover {
+  font-weight: bold;
+  filter: invert(78%) sepia(17%) saturate(5141%) hue-rotate(312deg)
+    brightness(101%) contrast(99%);
+}
+
+/* 초록색 */
+body > div.more > ul:nth-child(1) > il:nth-child(3):hover,
+body > div.more > ul:nth-child(3) > il:nth-child(4):hover {
+  filter: invert(33%) sepia(23%) saturate(1061%) hue-rotate(72deg)
+    brightness(95%) contrast(91%);
+}
+
+/* 마비로고 회전 */
+body > div.more > ul:nth-child(4) > il:nth-child(2) > img:hover {
+  transition: 0.3s all ease;
+  transform: rotate(90deg);
+}

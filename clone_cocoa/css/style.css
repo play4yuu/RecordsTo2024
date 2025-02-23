@@ -1,0 +1,46 @@
+@import "./css/font.css";
+@import "./css/reset.css";
+@import "./css/root.css";
+
+/* 기본설정들 */
+@import "./css/status-bar.css";
+@import "./css/top-header.css";
+@import "./css/profile.css";
+@import "./css/nav.css";
+@import "./css/noti.css";
+
+/* 페이지마다 있는 항목들 */
+@import "./css/login.css";
+@import "./css/friends.css";
+@import "./css/chats.css";
+@import "./css/more.css";
+@import "./css/setting.css";
+@import "./css/music.css";
+
+@import "./css/chatroom.css";
+
+@import "./css/cf.css";
+
+html {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+body {
+  display: flex;
+  width: 500px;
+  height: 1050px;
+  border: gray 1px solid;
+  font-family: "넥슨고딕2";
+  flex-direction: column;
+  position: relative;
+}
+
+/* 그외 영역에 걸쳐 나오는 것들 */
+
+a {
+  text-decoration-line: none;
+  color: var(--black-main);
+}
