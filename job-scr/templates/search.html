@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+
+    <style>
+      div,
+      body,
+      h1,
+      h2,
+      span,
+      p {
+        margin: 0px;
+        padding: 0px;
+        margin-blok: 0px;
+      }
+
+      @font-face {
+        font-family: "삼국지3";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Sam3KRFont.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "명조";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSMyungjo.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "풋볼";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXONFootballGothicBA1.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      html {
+        display: flex;
+        justify-content: center;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        width: 1500px;
+        height: auto;
+        margin: 50px 50px;
+        flex-direction: column;
+        font-family: "풋볼";
+        flex-wrap: wrap;
+      }
+
+      .warp {
+        display: flex;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-around;
+      }
+
+      /* 헤더부분 */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 100px;
+        background: none;
+        flex-direction: column;
+        margin: 10px 20px 40px 20px;
+        position: sticky;
+        top: 0px;
+        background-color: white;
+      }
+
+      .header > .h1 {
+        font-family: "삼국지3";
+        font-size: 50px;
+        font-weight: 55px;
+      }
+
+      .header > .h2 {
+        font-family: "명조";
+        font-size: 30px;
+      }
+      /* 헤더끝 */
+
+      /* 메인 시작 */
+      .result-con {
+        position: relative;
+        width: 300px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        margin: 20px 30px 30px 30px;
+        border: #020715 1px solid;
+        box-shadow: 0px 1px 10px #999999;
+        background-color: white;
+      }
+
+      .company {
+        padding: 10px 10px 5px 15px;
+        background-color: #f0f0f0;
+        font-size: 20px;
+      }
+
+      .cross-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        color: #020715;
+      }
+
+      .cross-btn:hover {
+        display: none;
+      }
+
+      .position {
+        padding: 20px 25px 15px 25px;
+        background-color: white;
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      .region {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 25px 5px 25px;
+        margin-bottom: 3px;
+      }
+
+      .herf-box {
+        background-color: rgba(250, 250, 250, 0.8);
+        border-top: 1px solid #f0f0f0;
+      }
+
+      .herf {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 8px;
+        padding-top: 4px;
+        width: 80px;
+        height: 25px;
+        border: #020715 1px solid;
+        position: relative;
+        left: 200px;
+
+        font-size: 16px;
+        text-decoration: none;
+        color: #020715;
+      }
+
+      .herf:active {
+        background-color: #ffffff;
+        border: #5a95f5 1px solid;
+        box-shadow: 0px 0px 3px #5a95f5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <span class="h1">Job Scrapper Result;</span>
+      <span class="h2">'{{keyword}}' 에 대한 스크래핑 결과입니다</span>
+    </div>
+
+    <!--   <li class="result-con">
+    <p class="company">회사</p>
+    <p class="position">직군</p>
+    <p class="region">지역</p>
+    <p class="herf">링크</p>
+  </li> -->
+
+    <div class="warp">
+      {% for job in jobs %}
+      <li class="result-con">
+        <p class="company">
+          {{job.company}}
+          <span class="cross-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-x-lg"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+              />
+            </svg>
+          </span>
+        </p>
+        <p class="position">{{job.position}}</p>
+        <p class="region">{{job.region}}</p>
+        <span class="herf-box">
+          <a class="herf" href="{{job.link}}" target="_blank"> Submit </a>
+        </span>
+      </li>
+      {% endfor%}
+    </div>
+  </body>
+</html>
