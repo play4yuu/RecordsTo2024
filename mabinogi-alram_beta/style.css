@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+  color: inherit;
+  flex-shrink: 0;
+  list-style: none;
+}
+
+@font-face {
+  font-family: "NEXON Lv2 Gothic";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Nexon Lv2 Gothic";
+  margin: 15px;
+  padding: 30px 30px;
+
+  width: 500px;
+  height: 740px;
+  border: 1px solid #020715;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: relative;
+}
+
+.title-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px 0px 20px 0px;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  display: flex;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+.add-item {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.box1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0px 0px 15px 0px;
+}
+
+input[type="checkbox"] {
+  /* transform: scale(1.5); */
+  margin-right: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0px 0px 10px 0px;
+  font-size: 20px;
+}
+
+.title {
+  display: flex;
+  padding: 3px 15px;
+  margin-bottom: 10px;
+  background-color: #ffd4d4;
+}
+
+.al-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.sm_text {
+  font-size: 15px;
+}
+
+#al_henkou_label {
+  font-size: 15px;
+}
+
+.box {
+  padding: 10px 10px;
+  background-color: antiquewhite;
+}
+
+.clova {
+  font-size: 13px;
+}
+
+.madeby {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.preview {
+  display: flex;
+  padding: 3px 5px;
+  margin-bottom: 10px;
+}
+
+.raid-smtext-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 0px 0px 10px 0px;
+}
+
+.hidden {
+  display: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#today_raid {
+  display: flex;
+  margin-right: 3px;
+}
+
+.release {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 33px;
+  left: 20px;
+  font-size: 12px;
+  padding: 3px;
+  color: rgba(0, 2, 15, 0.5);
+  border-radius: 10px;
+}
+
+.release > a:hover {
+  padding: 3px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.release > a {
+  padding: 3px;
+  color: rgba(0, 2, 15, 0.5);
+  text-decoration: none;
+}
+
+/* 여기부턴 릴리즈 */
+#rel_body {
+  display: flex;
+  justify-content: flex-start;
+  height: 740px;
+}
+
+#rel_body > div {
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0px 0px 10px 0px;
+}
+
+#rel_body > div > ul > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 10px 0px 10px 0px;
+}
+
+.rel_date {
+  display: flex;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.rel_text {
+  display: flex;
+  margin-left: 10px;
+}
+
+.overflow {
+  overflow: scroll;
+}
+
+.rel_text_warp__ul {
+  width: 100%;
+  height: 620px;
+
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+
+.rel_text_warp__ul::-webkit-scrollbar {
+  display: none; /* 크롬, 사파리, 오페라, 엣지 */
+}
+
+#footer_rel {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  justify-content: flex-end;
+  color: #000;
+}
+
+.footer-left-wrap {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 0px 0px 0px;
+}
+
+.ModeBtn {
+  display: flex;
+  padding: 2px 3px;
+  margin: 2px;
+}

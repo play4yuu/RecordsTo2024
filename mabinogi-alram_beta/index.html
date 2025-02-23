@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="마비노기 알라미" />
+    <meta name="keywords" content="마비노기, 알람, 알라미" />
+    <meta name="author" content="도라미야코" />
+    <title>마비노기 알라미</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="title-box">
+      <div class="box">
+        <h1 class="txt">현실시간</h1>
+        <h2 class="time" id="time_genjitsu"></h2>
+        <script src="erin_time.js"></script>
+      </div>
+
+      <div class="box">
+        <h1 class="txt">에린 시간</h1>
+        <h2 class="time" id="time_erin">에린시간표시</h2>
+        <script>
+          function getErinTime() {
+            const date = new Date();
+            const hours = String(date.getHours()).padStart(2, "0");
+            const minutes = String(date.getMinutes()).padStart(2, "0");
+            const seconds = String(date.getSeconds()).padStart(2, "0");
+
+            var curr_date = new Date();
+            var reset_date = new Date();
+
+            reset_date.setHours(0, 0, 0, 0);
+
+            var rest_sec = Math.round(
+              (((curr_date - reset_date) / 1000) % (36 * 60)) - 24
+            );
+
+            erinn_hour = Math.floor(rest_sec / 90);
+            erinn_min = Math.floor((rest_sec % 90) / 1.5);
+
+            if (erinn_hour < 0) {
+              erinn_hour = "12";
+            }
+
+            if (erinn_hour < 10) {
+              erinn_hour = "0" + erinn_hour;
+            }
+
+            if (erinn_min < 10) {
+              erinn_min = "0" + erinn_min;
+            }
+            // console.log(erinn_hour + ":" + erinn_min);
+            time_erin.innerText = `${erinn_hour}:${erinn_min}`;
+          }
+          getErinTime();
+          setInterval(getErinTime, 1500);
+        </script>
+      </div>
+    </div>
+
+    <div class="box1" id="add-item-al">
+      <h1 class="txt title">오늘의 어드템</h1>
+      <h2 class="add-item"></h2>
+      <script>
+        function add_item() {
+          var days = ["일", "월", "화", "수", "목", "금", "토"];
+          var days_items = [
+            "염색 앰플, 금속 염색 앰플",
+            "신비한 보석함, 특별한 유물 조각(50%)",
+            "대용량 축복의 포션, 로나의 특제 도시락, 음악 부스트 포션",
+            "공격 딜레이 감소 포션, 가벼운 마법 시전속도 증가 포션",
+            "긴급 탈출 아이스B, 완전 회복의 포션, 수호의 영혼석",
+            "거대한 외침의 뿔피리, 전투 경험치 포션(10분)",
+            "가벼운 물리 공격력 증가 포션, 가벼운 마법 공격력 포션",
+          ];
+
+          let day = new Date();
+          let youbi = day.getDay();
+
+          if (day.getHours < 7) {
+            youbi = youbi - 1;
+          }
+
+          document.querySelector(".add-item").innerHTML = days_items[youbi];
+        }
+
+        add_item();
+        setInterval(add_item, 3600);
+      </script>
+    </div>
+
+    <div class="box1" id="raid-al">
+      <h1 class="txt title">정각 레이드 알람</h1>
+      <div class="raid-smtext-wrap">
+        <p id="today_raid"></p>
+        <p class="today_raid" id="today_raid_list"></p>
+      </div>
+
+      <label>
+        <input type="checkbox" id="raid_alarm0" placeholder="0" />
+        정각 알람
+      </label>
+
+      <label>
+        <input type="checkbox" id="raid_alarm1" placeholder="1" />
+        1분전 알람
+      </label>
+
+      <label>
+        <input type="checkbox" id="raid_alarm2" placeholder="2" />
+        2분전 알람
+      </label>
+
+      <label>
+        <input type="checkbox" id="raid_alarm3" placeholder="3" />
+        3분전 알람
+      </label>
+
+      <script>
+        //레이드 관련 체크
+        function chked() {
+          var chk0 = document.getElementById("raid_alarm0").checked;
+          var chk1 = document.getElementById("raid_alarm1").checked;
+          var chk2 = document.getElementById("raid_alarm2").checked;
+          var chk3 = document.getElementById("raid_alarm3").checked;
+
+          let now = new Date();
+          let raid_hour = now.getHours();
+          let raid_min = now.getMinutes();
+          let raid_sec = now.getSeconds();
+          let raid_day = now.getDay();
+
+          //   console.log(raid_min, ":", raid_sec);
+
+          var audio_0m = new Audio("./voice/00_raid_0m.mp3");
+          var audio_1m = new Audio("./voice/01_raid_1m.mp3");
+          var audio_2m = new Audio("./voice/02_raid_2m.mp3");
+          var audio_3m = new Audio("./voice/03_raid_3m.mp3");
+
+          // 레이드 시간은 오전 10시 ~ 오전 2시
+          //9 10 11 12 13 14 15  16 17 18 19 20 21 22 23 24 1 2
+
+          var raid_time_text = document.querySelector("#today_raid");
+
+          var days = ["일", "월", "화", "수", "목", "금", "토"];
+
+          function raid_day_result() {
+            //7시 이전에는 이전 요일을 알려준다
+            if (raid_hour < 7) {
+              raid_day = raid_day - 1;
+            }
+            document.getElementById("today_raid").innerHTML =
+              "[ 지금은 레이드시간 입니다 ]";
+
+            if (0 < raid_day && raid_day < 5) {
+              //월~목일경우
+              //오전이면 (10~17)
+              if (5 < raid_hour && raid_hour < 18) {
+                if (raid_day % 2 == 0) {
+                  //짝수 요일 (화 목) 일경우
+                  document.getElementById("today_raid_list").innerHTML =
+                    days[raid_day] + " : " + "오전 화드 ";
+                } else {
+                  //홀수요일일경우 (월수)
+                  document.getElementById("today_raid_list").innerHTML =
+                    days[raid_day] + " : " + "오전 블드";
+                }
+              }
+
+              //오후면 (18~24~02)
+              if (
+                (18 <= raid_hour && raid_hour <= 24) ||
+                (0 <= raid_hour && raid_hour < 2)
+              ) {
+                if (raid_day % 2 == 0) {
+                  //짝수 요일 (화 목) 일경우
+                  document.getElementById("today_raid_list").innerHTML =
+                    days[raid_day] + " : " + "오후 블드";
+                } else {
+                  //홀수요일일경우
+                  document.getElementById("today_raid_list").innerHTML =
+                    days[raid_day] + " : " + "오후 화드 ";
+                }
+              }
+            } else {
+              document.getElementById("today_raid_list").innerHTML =
+                days[raid_day] + " : " + "주말레이드";
+            }
+          }
+
+          if (
+            (10 <= raid_hour && raid_hour <= 24) ||
+            raid_hour == 1 ||
+            (raid_hour == 2 && raid_min == 0)
+          ) {
+            raid_time_text.classList.add("bold");
+            raid_day_result();
+          } else {
+            document.getElementById("today_raid").innerHTML =
+              "레이드 시간이 아닙니다.";
+          }
+
+          // 레이드 알람 관련
+          if (chk0 == true) {
+            if (raid_min == 0 && raid_sec == 0) {
+              audio_0m.play();
+            }
+          }
+
+          if (chk1 == true) {
+            if (raid_min == 59 && raid_sec == 0) {
+              audio_1m.play();
+            }
+          }
+
+          if (chk2 == true) {
+            if (raid_min == 58 && raid_sec == 0) {
+              audio_2m.play();
+            }
+          }
+
+          if (chk3 == true) {
+            if (raid_min == 57 && raid_sec == 0) {
+              audio_3m.play();
+            }
+          }
+        }
+
+        chked();
+        setInterval(chked, 1000);
+      </script>
+    </div>
+
+    <div class="box1" id="alba-al">
+      <h1 class="txt title">알바 알람 (보고시간기준)</h1>
+
+      <form>
+        <label id="al_henkou_label">
+          <input
+            type="checkbox"
+            name="al_henkou"
+            id="al_henkou"
+            value="tara"
+            placeholder="알람시간변경"
+          />
+          <p class="sm_text">
+            체크하면 에린시간으로 10분전에 알람이 출력됩니다
+          </p>
+        </label>
+
+        <br />
+
+        <label>
+          <input
+            type="checkbox"
+            name="alba_bgh"
+            id="alba_bgh"
+            value="green"
+            placeholder="타라 법황청"
+          />
+          법황청 : 오후2시
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="alba_church"
+            id="alba_church"
+            value="tara"
+            placeholder="교회"
+          />성당 : 오후4시
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="alba_cav"
+            id="alba_cav"
+            value="blue"
+            placeholder="카브 등대알바"
+          />
+          카브 등대 : 오후 7시
+        </label>
+      </form>
+
+      <script>
+        function alba_al() {
+          // erinn_hour , erinn_min
+          console.log(`${erinn_hour}:${erinn_min}`);
+
+          // chk2 = 교회(16) , chk3 = 카브(19) , chk4 = 법황청(14)
+
+          var chk1 = document.getElementById("al_henkou").checked;
+          var chk2_church = document.getElementById("alba_church").checked;
+          var chk3_cav = document.getElementById("alba_cav").checked;
+          var chk4_bhc = document.getElementById("alba_bgh").checked;
+
+          const audio_church = new Audio("./voice/04_church_al_end.mp3");
+          const audio_cav = new Audio("./voice/05_cav_al_end.mp3");
+          const audio_bhc = new Audio("./voice/06_seongwha_al_end.mp3");
+
+          if (chk1 == false) {
+            if (chk2_church == true) {
+              if (erinn_hour == 16 && erinn_min == 00) {
+                audio_church.play();
+              }
+            }
+            if (chk3_cav == true) {
+              if (erinn_hour == 19 && erinn_min == 00) {
+                audio_cav.play();
+              }
+            }
+            if (chk4_bhc == true) {
+              if (erinn_hour == 14 && erinn_min == 00) {
+                audio_bhc.play();
+              }
+            }
+          } else {
+            if (chk2_church == true) {
+              if (erinn_hour == 15 && erinn_min == 40) {
+                audio_church.play();
+              }
+            }
+            if (chk3_cav == true) {
+              if (erinn_hour == 18 && erinn_min == 40) {
+                audio_cav.play();
+              }
+            }
+            if (chk4_bhc == true) {
+              if (erinn_hour == 13 && erinn_min == 40) {
+                audio_bhc.play();
+              }
+            }
+          }
+        }
+        alba_al();
+        setInterval(alba_al, 1501);
+      </script>
+    </div>
+
+    <!-- 푸터  -->
+    <!-- 볼륨조절 및 미리듣기 -->
+    <div class="footer">
+      <div calss="footer-left-wrap">
+        <button id="darkmode" class="ModeBtn" onclick="darkmode()">
+          다크모드
+        </button>
+
+        <button id="lightmode" class="ModeBtn" onclick="lightmode()">
+          라이트모드
+        </button>
+      </div>
+
+      <div class="footer-right-wrap">
+        <div class="vol">
+          <button id="preview" class="preview" onclick="play()">
+            놀람방지 소리 미리듣기
+          </button>
+        </div>
+
+        <script>
+          const dark_btn = document.getElementById("darkmode");
+          const light_btn = document.getElementById("lightmode");
+
+          const dark_bg = "#121212"; //뒷배경색
+          const dark_color = "#fff";
+          const dark_box_color = "#373737"; //밝은 회색
+
+          const light_bg = "#fff";
+          const light_color = "#020715";
+          const light_box1 = "#faebd7"; //노랑
+          const light_box2 = "#ffd4d4"; //부농
+
+          const body_line = document.querySelector("body");
+          const btn_pre = document.getElementById("preview");
+          const btn_mode = document.getElementsByClassName("ModeBtn");
+
+          //맨위쪽 타임존 box
+          var timebox1 = document.querySelector(
+            "body > div.title-box > div:nth-child(1)"
+          );
+
+          var timebox2 = document.querySelector(
+            "body > div.title-box > div:nth-child(2)"
+          );
+
+          //아래쪽 분홍색 타이틀 박스들
+
+          let title_box = document.getElementsByClassName("title");
+
+          // 다크모드
+          dark_btn.onclick = function () {
+            //글자들
+            document.body.style.backgroundColor = dark_bg;
+            document.body.style.color = dark_color;
+
+            timebox1.style.backgroundColor = dark_box_color;
+            timebox2.style.backgroundColor = dark_box_color;
+
+            for (let i = 0; i < title_box.length; i++) {
+              title_box[i].style.backgroundColor = dark_box_color;
+            }
+
+            //몸체 선
+            body_line.style.border = "1px solid #bbb";
+
+            //버튼들
+            btn_pre.style.backgroundColor = dark_box_color;
+            btn_pre.style.color = dark_color;
+
+            for (let i = 0; i < btn_mode.length; i++) {
+              btn_mode[i].style.backgroundColor = dark_box_color;
+              btn_mode[i].style.color = dark_color;
+            }
+          };
+
+          // 라이트모드
+          light_btn.onclick = function () {
+            document.body.style.backgroundColor = light_bg;
+            document.body.style.color = light_color;
+
+            timebox1.style.backgroundColor = light_box1;
+            timebox2.style.backgroundColor = light_box1;
+
+            for (let i = 0; i < title_box.length; i++) {
+              title_box[i].style.backgroundColor = light_box2;
+            }
+
+            //몸체 선
+            body_line.style.border = "1px solid #020715";
+
+            //버튼들
+            btn_pre.style.backgroundColor = "";
+            btn_pre.style.color = light_color;
+
+            for (let i = 0; i < btn_mode.length; i++) {
+              btn_mode[i].style.backgroundColor = "";
+              btn_mode[i].style.color = light_color;
+            }
+          };
+        </script>
+
+        <script>
+          const pre_btn = document.getElementById("preview");
+          const pre_audio = new Audio("./voice/voice_test.mp3");
+
+          pre_btn.onclick = function () {
+            pre_audio.play();
+          };
+        </script>
+
+        <p class="madeby">Made by WF도라미야코</p>
+      </div>
+    </div>
+
+    <div class="release">
+      <a href="./release.html">수정 노트</a>
+    </div>
+    <span class="clova"
+      >삽입된 음성은 CLOVA Dubbing으로 제작한 AI 보이스입니다.</span
+    >
+  </body>
+</html>
