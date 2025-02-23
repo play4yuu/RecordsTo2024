@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoList</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div id="body_wrap">
+      <!-- 헬로우 시작 -->
+      <div class="hello">
+        <h1>당신의 이름을 알려주세요</h1>
+        <form>
+          <label>
+            <input
+              type="text"
+              placeholder="이름을 입력하세요"
+              required
+              maxlength="10"
+            />
+            <input type="submit" value="확인" />
+          </label>
+        </form>
+      </div>
+      <!-- 헬로우끝 -->
+
+      <!-- main__wrap -->
+      <div class="main_wrap hidden">
+        <div id="bookmarker">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100px"
+            height="100px"
+            fill="currentColor"
+            class="bi bi-bookmark-fill"
+            viewBox="0 0 16 16"
+            id="bookmarker_id"
+          >
+            <path
+              d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"
+            />
+          </svg>
+        </div>
+        <div id="icon_wrap">
+          <img
+            src="./resource/icon/maple_island_icon.png"
+            class="icon"
+            alt="icon"
+            id="icon_maple"
+          />
+          <img
+            src="./resource/icon/icon_elinia.png"
+            class="icon"
+            alt="icon"
+            id="icon_elinia"
+          />
+          <img
+            src="./resource/icon/icon_erev.png"
+            class="icon"
+            alt="icon"
+            id="icon_erev"
+          />
+          <img
+            src="./resource/icon/icon_timetemple.png"
+            class="icon"
+            alt="icon"
+            id="icon_timetemple"
+          />
+          <img
+            src="./resource/icon/icon_arcana.png"
+            class="icon"
+            alt="icon"
+            id="icon_arcana"
+          />
+          <img
+            src="./resource/icon/mirror_day_icon.png"
+            class="icon"
+            alt="icon"
+            id="icon_mirrorday"
+          />
+          <img
+            src="./resource/icon/icon_happyv.png"
+            class="icon"
+            alt="icon"
+            id="icon_happyv"
+          />
+        </div>
+        <div id="left_wrap">
+          <div class="time_wrap">
+            <div class="time_wrap__top">
+              <p id="time_date">1월 1일</p>
+              <p id="time_youbi">월요일</p>
+            </div>
+            <p class="time_wrap__bottom">00 : 00</p>
+          </div>
+          <div class="quo_wrap">
+            <div class="quo_wrap_div">
+              <p id="quo_text">
+                잘 들어라. 애초에 기대를 하니까 배신을 당하는 거다. 처음부터
+                아무것도 기대하지 않으면, 배신당할 일도 없지.
+              </p>
+              <p id="quo_au">- 트레이너(클로저스)</p>
+            </div>
+          </div>
+          <div class="weather_wrap">
+            <div id="weather__bg">
+              <p id="weather__icon">아이콘</p>
+              <div class="weather__right">
+                <p id="weather_loca">서울</p>
+                <div class="weather__right__right">
+                  <span id="weather_temp">0도</span>
+                  <span id="weather_tenki">맑음</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="right_wrap_p">
+          <div class="right_wrap">
+            <!-- 리스트 갯수 초과 알람용 -->
+            <div class="hidden al_right">오늘 할일이 너무 많아요</div>
+
+            <h1>오늘 할일</h1>
+            <ul class="todo_list">
+              <!-- <li>
+                <label>
+                  <input type="checkbox" />
+                  <span>할 일2</span>
+                  <button></button>
+                </label>
+              </li> -->
+            </ul>
+
+            <form id="add_todo_list_wrap">
+              <label>
+                <input type="submit" value="" id="add_todo_list_btn" />
+
+                <input
+                  type="text"
+                  placeholder="일정 추가하기"
+                  required
+                  maxlength="15"
+                  id="add_todo_list_input"
+                />
+              </label>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div onmouseover="mouseover()" onmouseleave="mouseout()" id="npc1"></div>
+      <!-- <div id="npc2"></div> -->
+      <div class="bubble hidden">
+        <p id="bubble_text"></p>
+      </div>
+    </div>
+    <script src="./js/hello.js"></script>
+    <script src="./js/time.js"></script>
+    <script src="./js/quo.js"></script>
+    <script src="./js/new_todo.js"></script>
+    <script src="./js/bg.js"></script>
+    <script src="./js/weather.js"></script>
+    <script src="./js/chk.js"></script>
+  </body>
+</html>
+<!-- <svg
+version="1.1"
+id="maple_logo"
+x="0px"
+y="0px"
+width="28.35px"
+height="28.35px"
+viewBox="0 0 28.35 28.35"
+xml:space="preserve"
+>
+<path
+  fill="#B61F22"
+  d="M21.196,5.911c0.415,0.908,0.386,1.907-0.086,2.999l0.896-0.724c0.755-0.742,1.52-1.776,2.285-3.104
+l0.39-0.485C25,4.368,25.3,4.518,25.586,5.044c-0.919,1.834-2.304,3.332-4.15,4.494l1.037,0.066
+c0.794,0.197,1.482,0.695,2.066,1.495c-0.966-0.336-1.7-0.267-2.21,0.209l1.239,1.17c0.843,1.066,1.308,2.341,1.39,3.827
+c0.134,2.527,0.282,4.393,0.447,5.598c-0.013-0.14-0.929-1.038-2.752-2.694c-0.881-0.824-1.546-1.938-1.99-3.341l0.268,0.971
+c0.133,0.851,0.099,1.79-0.105,2.817c-0.38,1.848-1.465,3.738-3.256,5.675c-1.338,1.467-2.24,2.376-2.702,2.732
+c0.271-0.882,0.455-1.576,0.551-2.085c0.172-0.881,0.207-1.928,0.105-3.143c-0.128-1.6-0.168-2.712-0.124-3.34
+c0.076-1.328,0.413-2.498,1.009-3.515c-0.443,0.705-1.222,1.368-2.332,1.99c-2.214,1.27-4.969,1.729-8.264,1.381l-4.008-0.19
+l1.638-0.687c1.319-0.786,2.583-1.982,3.789-3.588c0.33-0.437,0.837-0.808,1.466-1.257c1.505-0.984,3.476-1.698,5.36-1.59
+c-0.61-0.057-1.323-0.235-2.142-0.533c-1.757-0.634-3.237-1.646-4.437-3.037C6.056,6.929,4.388,5.86,2.471,5.263l6.055,0.086
+c3.003-0.076,5.308,0.578,6.92,1.961c-0.818-0.901-1.395-2.345-1.732-4.332c-0.147-0.799-0.585-1.698-1.313-2.694l1.98,1.094
+c1.498,0.755,2.551,1.403,3.16,1.943c1.187,1.053,1.891,2.398,2.113,4.036c0.616-0.394,0.872-1.212,0.771-2.456L21.196,5.911z"
+/>
+</svg> -->
